@@ -1,0 +1,27 @@
+<svg width="46.000000" height="48.000000" viewBox="0 0 46 48" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip201_835">
+			<rect id="Calque_1" width="46.000000" height="48.000000" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<linearGradient x1="0.160001" y1="13.491541" x2="33.040001" y2="36.598946" id="paint_linear_201_836_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FFFFFF"/>
+			<stop offset="1.000000" stop-color="#000000"/>
+		</linearGradient>
+		<linearGradient x1="31.124065" y1="14.102383" x2="45.184067" y2="23.980053" id="paint_linear_201_837_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FFFFFF"/>
+			<stop offset="1.000000" stop-color="#000000"/>
+		</linearGradient>
+		<linearGradient x1="34.919987" y1="39.336388" x2="41.539986" y2="43.985634" id="paint_linear_201_838_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FFFFFF"/>
+			<stop offset="1.000000" stop-color="#000000"/>
+		</linearGradient>
+	</defs>
+	<g clip-path="url(#clip201_835)">
+		<path id="path" d="M9.8 0L2.72 12.96L6.75 23.85L0 26.14L7.01 28.92L9.45 36L10.39 33.68L15 46.15L23.02 48.11L29.04 42.19L22.83 7.21L9.8 0ZM7.58 22.63L4.25 13.63L13.26 13.87L16.34 25.41L12.38 23.85L9.94 16.76L7.58 22.63ZM12.91 12.67L4.37 12.44L9.87 2.36L12.91 12.67ZM14.07 12.34L11.02 2.04L21.14 7.64L14.07 12.34ZM7.97 28.01L3.45 26.22L8.05 24.66L9.85 20.18L11.42 24.74L15.94 26.53L11.34 28.09L9.54 32.57L7.97 28.01ZM11.06 32.02L12.25 29.04L16.89 27.47L22 46.63L15.91 45.14L11.06 32.02ZM23.15 46.3L18.02 27.08L19.39 26.62L17.72 25.96L14.41 13.54L21.86 8.59L27.75 41.78L23.15 46.3Z" fill="url(#paint_linear_201_836_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+		<path id="path" d="M39.69 31.66L45.99 19.77L41.84 4.72L30.09 15.55L29.47 29.09L33.69 32.82L39.69 31.66ZM38.89 30.6L34.74 31.4L38.16 20.46L44.34 20.32L38.89 30.6ZM41.53 8.1L44.57 19.12L38.5 19.27L41.53 8.1ZM37.34 18.97L31.68 15.7L40.4 7.67L37.34 18.97ZM31.23 16.82L37 20.15L33.57 31.11L30.7 28.57L31.23 16.82Z" fill="url(#paint_linear_201_837_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+		<path id="path" d="M38.34 36.81L36.93 40.32L33.34 41.54L36.87 42.93L38.1 46.5L39.51 43L43.11 41.78L39.58 40.38L38.34 36.81ZM38.6 42.05L38.19 43.07L37.83 42.03L36.8 41.62L37.85 41.26L38.26 40.24L38.62 41.28L39.65 41.69L38.6 42.05Z" fill="url(#paint_linear_201_838_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</g>
+</svg>

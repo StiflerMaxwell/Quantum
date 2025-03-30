@@ -1,0 +1,1077 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+main {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Hero Section 样式 */
+.hero {
+    height: 100vh;
+    width: 100%;
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 1 !important;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-bg-img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0; /* 隐藏原始图片，完全由Canvas显示 */
+    z-index: 1;
+}
+
+/* 为Canvas容器添加样式 */
+.canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.canvas-container canvas {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    margin: auto;
+}
+
+.hero-content {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+}
+
+.vertu-title {
+    font-family: 'EngraversGothic BT', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 51px;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    background: linear-gradient(0deg, #000000, #FFFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.vertu-title.fade-in {
+    opacity: 1;
+}
+
+.subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.subtitle.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.phone-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.phone-hero-img {
+    max-height: 60vh;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+}
+
+.pre-order-container {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+}
+
+.pre-order-btn {
+    display: inline-block;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 0;
+    width: 144px;
+    height: 39px;
+    line-height: 39px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease, background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.pre-order-btn.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pre-order-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Power of Beauty Section 样式 */
+.power-beauty {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.beauty-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.beauty-title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.power-beauty h2 {
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    background: linear-gradient(to bottom, #FFFFFFFF, #FFFFFF00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+.beauty-description {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+}
+
+.beauty-phone {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.beauty-img {
+    height: 810px;
+    width: auto;
+    object-fit: contain;
+}
+
+.beauty-features {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.feature-grid {
+    width: 100%;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 60px 80px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-items: center;
+}
+
+.beauty-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    max-width: 270px;
+    justify-self: center;
+}
+
+.beauty-feature.fade-in {
+    opacity: 1;
+    animation: fadeInLeft 0.5s ease-out forwards;
+}
+
+.feature-icon {
+    width: 56px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+}
+
+.feature-icon-img {
+    width: 56px;
+    height: 48px;
+    display: block;
+}
+
+.feature-text {
+    flex: 1;
+    width: 100%;
+    max-width: 300px;
+    align-self: flex-start;
+}
+
+.feature-text p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #7a7a7a;
+    font-weight: 300;
+    margin: 0;
+    text-align: left;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.beauty-feature .highlight {
+    color: #fff;
+    font-weight: 500;
+}
+
+@media (max-width: 992px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        max-width: 500px;
+    }
+    
+    .beauty-img {
+        height: 650px;
+    }
+}
+
+@media (max-width: 768px) {
+    .beauty-img {
+        height: 550px;
+    }
+    
+    .feature-text p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .beauty-feature {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .beauty-img {
+        height: 450px;
+    }
+    
+    .feature-text p {
+        font-size: 16px;
+    }
+}
+
+.phone-display {
+    margin: 3rem auto;
+    max-width: 70%;
+}
+
+.phone-display-img {
+    max-height: 60vh;
+}
+
+/* Feature Icons Section 样式 */
+.features {
+    padding: 5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.feature-row {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    flex: 0 0 calc(50% - 5rem);
+    max-width: 400px;
+    text-align: center;
+}
+
+/* 其他部分的feature-icon样式 */
+.feature-item .feature-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+}
+
+.feature-item .feature-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.feature-item h3 {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 300;
+}
+
+/* Quantum Encryption Section 样式 */
+.encryption {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 80px 0 120px;
+    overflow: hidden;
+}
+
+.encryption h2 {
+    height: 35px;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 0px;
+    margin-bottom: 30px;
+    background: linear-gradient(180deg, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+    max-width: 800px;
+}
+
+.encryption-description {
+    max-width: 900px;
+    margin: 0 auto 60px;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 0 20px;
+}
+
+.processor-display {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.processor-img {
+    width: 100%;
+    height: auto;
+    max-height: 810px;
+    object-fit: contain;
+}
+
+/* Processor Features Section 样式 */
+.processor-features {
+    width: 100%;
+    padding: 30px 20px 0;
+    margin: auto;
+    position: relative;
+    margin-top: 60px;
+}
+
+/* 添加上下分隔线 */
+.processor-features:before,
+.processor-features:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    max-width: 80%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.processor-features:before {
+    top: 0;
+}
+
+.processor-features:after {
+    bottom: -30px;
+}
+
+.processor-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 30px 0 20px;
+}
+
+.processor-item {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    text-align: center;
+    margin: 0 10px;
+    padding: 20px 0;
+}
+
+.processor-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: none;
+}
+
+.processor-item p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 300;
+}
+
+/* Engineering Meets Artistry Section 样式 */
+.engineering {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.engineering-display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    width: 50%;
+}
+
+.phone-detail-img {
+    width: 600px;
+    height: 700px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.engineering-content {
+    width: 50%;
+    padding: 0 0 0 40px;
+    max-width: 580px;
+}
+
+.engineering-content h2 {
+    height: 35px;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 0px;
+    text-align: left;
+    text-transform: uppercase;
+    background: linear-gradient(180deg, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    margin-bottom: 15px;
+    word-spacing: normal;
+}
+
+.engineering-subtitle {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 40px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+    text-align: left;
+}
+
+.engineering-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.engineering-features li {
+    font-size: 16px;
+    margin-bottom: 18px;
+    color: #ffffff;
+    line-height: 24px;
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 24px;
+    text-align: left;
+    font-weight: 300;
+}
+
+.engineering-features li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #fff;
+    font-size: 20px;
+    line-height: 24px;
+    margin-right: 8px;
+}
+
+/* VPS Digital Workforce Section 样式 */
+.vps {
+    min-height: 100vh;
+    background-color: #000;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.vps h2 {
+    height: 35px;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 34px;
+    letter-spacing: 0px;
+    margin-bottom: 60px;
+    background: linear-gradient(180deg, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.vps-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 0 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.vps-description {
+    flex: 0 0 45%;
+    max-width: 440px;
+    text-align: left;
+    padding-right: 0;
+}
+
+.vps-description p {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0px;
+    color: rgb(255, 255, 255);
+    text-align: left;
+}
+
+.vps-stats {
+    flex: 0 0 45%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.stat {
+    text-align: left;
+}
+
+.more-than, .non-stop {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+.stat h3 {
+    font-size: 36px;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+    color: #fff;
+    text-transform: none;
+    line-height: 40px;
+}
+
+.stat p:not(.more-than):not(.non-stop) {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0px;
+    color: rgb(255, 255, 255);
+    text-align: left;
+}
+
+/* Art of Discretion Section 样式 */
+.discretion {
+    padding: 5rem 2rem;
+    background: linear-gradient(to bottom, #000, #111);
+}
+
+.discretion h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.discretion-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.phone-security-img {
+    flex: 0 0 45%;
+    max-width: 500px;
+}
+
+.security-content {
+    flex: 0 0 45%;
+    max-width: 500px;
+}
+
+.security-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.security-content p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+}
+
+.pre-order-link {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.pre-order-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.pre-order-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.arrow {
+    margin-left: 5px;
+    transition: margin-left 0.3s ease;
+}
+
+.pre-order-link:hover .arrow {
+    margin-left: 10px;
+}
+
+/* Power That Persists Section 样式 */
+.power {
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.power h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.power-description {
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.power-features {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.power-feature {
+    flex: 0 0 calc(33.333% - 3rem);
+    max-width: 300px;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.power-feature h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.power-feature p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+/* 响应式样式 */
+@media (max-width: 1200px) {
+    .engineering {
+        flex-direction: column;
+        padding: 60px 20px;
+    }
+    
+    .engineering-display, .engineering-content {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 0;
+        justify-content: center;
+    }
+    
+    .engineering-display {
+        margin-bottom: 40px;
+    }
+    
+    .phone-detail-img {
+        width: 100%;
+        max-width: 600px;
+    }
+    
+    .engineering-content {
+        text-align: center;
+    }
+    
+    .engineering-features {
+        text-align: left;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .vps-content {
+        flex-direction: column;
+    }
+
+    .vps-description, .vps-stats {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .vps-description {
+        margin-bottom: 40px;
+    }
+
+    .stat {
+        text-align: left;
+    }
+
+    .phone-security-img, .security-content {
+        flex: 0 0 100%;
+    }
+
+    .security-content h2, .security-content p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .power-beauty h2, .encryption h2, .vps h2, .discretion h2, .power h2 {
+        font-size: 2rem;
+    }
+
+    .feature-row {
+        gap: 2rem;
+    }
+
+    .feature-item {
+        flex: 0 0 100%;
+    }
+
+    .processor-item {
+        flex: 0 0 100%;
+    }
+
+    .power-feature {
+        flex: 0 0 100%;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.phone-hero-img, .phone-display-img, .processor-img, .phone-detail-img, .beauty-img {
+    animation: fadeIn 1.5s ease-out;
+}
+
+h1, h2, .subtitle, .beauty-description, .encryption-description, .engineering-subtitle, .vps-description p, .security-content p, .power-description {
+    animation: slideUp 1s ease-out;
+}
+
+/* 不透明度变化效果 */
+.feature-item, .processor-item, .engineering-features li, .stat, .power-feature {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.power-beauty::after {
+    display: none;
+}
+
+/* Hero Section 响应式样式 */
+@media (min-width: 1400px) {
+    .hero {
+        height: 100vh;
+    }
+}
+
+@media (max-width: 1400px) and (min-width: 1200px) {
+    .hero {
+        height: 100vh;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 992px) {
+    .hero {
+        height: 100vh;
+    }
+    
+    .hero-bg-img {
+        max-height: 85vh;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero {
+        height: 100vh;
+    }
+    
+    .hero-bg-img {
+        max-height: 80vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 100vh;
+    }
+    
+    .hero-bg-img {
+        max-height: 70vh;
+    }
+    
+    .hero-content {
+        top: 15%;
+    }
+    
+    .vertu-title {
+        font-size: 36px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        height: 100vh;
+    }
+    
+    .hero-bg-img {
+        max-height: 60vh;
+    }
+    
+    .vertu-title {
+        font-size: 28px;
+        line-height: 32px;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+    }
+}

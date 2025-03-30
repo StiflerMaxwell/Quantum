@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VERTU QUANTUM</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 自定义字体 -->
+    <style>
+        @font-face {
+            font-family: 'EngraversGothic BT';
+            src: url('fonts/EngraversGothicBT.woff2') format('woff2'),
+                 url('fonts/EngraversGothicBT.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+</head>
+<body>
+    <main>
+        <!-- 第一部分：Hero Section -->
+        <section class="hero">
+            <div class="hero-background">
+                <img src="images/hero.webp" alt="Vertu Quantum Flip" class="hero-bg-img" onload="this.dataset.loaded='true'">
+            </div>
+            <div class="hero-content">
+                <h1 class="vertu-title">VERTU QUANTUM</h1>
+                <p class="subtitle">Quantum Flip, Magic Unfold</p>
+            </div>
+            <div class="pre-order-container">
+                <a href="#" class="pre-order-btn">PRE-ORDER</a>
+            </div>
+        </section>
+
+        <!-- 第二部分：Power of Beauty -->
+        <section class="power-beauty">
+            <div class="beauty-content">
+                <div class="beauty-title">
+                    <h2>POWER OF BEAUTY</h2>
+                    <p class="beauty-description">
+                        Inspired by supercar aesthetics, every curve tells a story of power. Precision-engineered with aerodynamic lines that echo the silhouette of legendary sports cars. Each piece is meticulously hand-polished, featuring our signature diamond-cut patterns that roar with power like a V12 engine
+                    </p>
+                </div>
+                <div class="beauty-phone">
+                    <img src="images/beauty.webp" alt="Vertu Quantum Beauty" class="beauty-img">
+                </div>
+                <div class="beauty-features">
+                    <div class="feature-grid">
+                        <div class="beauty-feature">
+                            <div class="feature-icon">
+                                <img src="images/h800.svg" alt="Space-grade metal" class="feature-icon-img">
+                            </div>
+                            <div class="feature-text">
+                                <p>Space-grade metal that's tough as a vault <span class="highlight">(HV800 hardness rating)</span></p>
+                            </div>
+                        </div>
+                        <div class="beauty-feature">
+                            <div class="feature-icon">
+                                <img src="images/proof.svg" alt="Pristine finish" class="feature-icon-img">
+                            </div>
+                            <div class="feature-text">
+                                <p>Stays pristine: <span class="highlight">scratch-proof, rust-proof,</span> and gentle on your skin</p>
+                            </div>
+                        </div>
+                        <div class="beauty-feature">
+                            <div class="feature-icon">
+                                <img src="images/precision.svg" alt="Crafted with precision" class="feature-icon-img">
+                            </div>
+                            <div class="feature-text">
+                                <p>Crafted with the same <span class="highlight">precision</span> as luxury timepieces</p>
+                            </div>
+                        </div>
+                        <div class="beauty-feature">
+                            <div class="feature-icon">
+                                <img src="images/3hour.svg" alt="Hand-polishing" class="feature-icon-img">
+                            </div>
+                            <div class="feature-text">
+                                <p>Each piece receives over <span class="highlight">3 hours of artisan hand-polishing</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+  
+
+        <!-- 第三部分：Quantum Encryption Meets Human Touch -->
+        <section class="encryption">
+            <h2>QUANTUM ENCRYPTION MEETS HUMAN TOUCH</h2>
+            <p class="encryption-description">
+                The world's first compact folding marvel,engineered at the frontier of 3nm precision.Where quantum meets nano —a masterpiece that graces the palm of your hand.
+            </p>
+            <div class="processor-display">
+                <img src="images/snapdragon.webp" alt="Snapdragon处理器" class="processor-img">
+            </div>
+            <div class="processor-features">
+                <div class="processor-row">
+                    <div class="processor-item">
+                        <h3>Snapdragon 8 Gen4 Supreme</h3>
+                        <p>40% Performance Leap</p>
+                    </div>
+                    <div class="processor-item">
+                        <h3>Quantum-bound</h3>
+                        <p>BB84 Cryption Protocol</p>
+                    </div>
+                    <div class="processor-item">
+                        <h3>7th generation AI engine</h3>
+                        <p>Trillion Calculations Per Second</p>
+                    </div>
+                    <div class="processor-item">
+                        <h3>1.8x</h3>
+                        <p>Faster Than Its Predecessor</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第四部分：Engineering Meets Artistry -->
+        <section class="engineering">
+            <div class="engineering-display">
+                <img src="images/artdetail.webp" alt="Vertu quantum" class="phone-detail-img">
+            </div>
+            <div class="engineering-content">
+                <h2>ENGINEERING MEETS ARTISTRY</h2>
+                <p class="engineering-subtitle">The King Kong Axis: Redefining Durability</p>
+                <ul class="engineering-features">
+                    <li>Certified For 800,000 Folds: A Lifetime Of 200 Daily Transformations</li>
+                    <li>Aerospace-grade Titanium Alloy Achieving HV800 Hardness</li>
+                    <li>Mastery Over Extremes: From -15°C Arctic Winds To 60°C Desert Heat</li>
+                    <li>Survives 1.2-meter Drops Onto Marble: Strength Meets Elegance</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 第五部分：VPS Digital Workforce -->
+        <section class="vps">
+            <h2>VPS - YOUR 24/7 DIGITAL WORKFORCE</h2>
+            <div class="vps-content">
+                <div class="vps-description">
+                    <p>
+                        Unlock a new era of efficiency with VERTU's intelligent digital workforce—an advanced AI-powered system designed to assist you seamlessly in every aspect of your life. Whether you're managing work tasks, researching information, or generating creative content, this technology acts as your personal assistant, streamlining processes and enhancing productivity. Think of it as your always-available digital partner, capable of handling everything from complex data analysis to instant content creation, so you can focus on what truly matters.
+                    </p>
+                </div>
+                <div class="vps-stats">
+                    <div class="stat">
+                        <p class="more-than">More than</p>
+                        <h3>2,000+</h3>
+                        <p class="more-than">AI-powered professionals</p>
+                    </div>
+                    <div class="stat">
+                        <p class="more-than">More than</p>
+                        <h3>140+</h3>
+                        <p class="more-than">specialized domains</p>
+                    </div>
+                    <div class="stat">
+                        <p class="non-stop">Non-stop</p>
+                        <h3>analysis & strategy</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第六部分：Art of Discretion -->
+        <section class="discretion">
+            <h2>THE ART OF DISCRETION</h2>
+            <div class="discretion-content">
+                <div class="phone-security-img">
+                    <img src="phone-security.png" alt="Vertu Quantum">
+                </div>
+                <div class="security-content">
+                    <h2>CONFIDENTIAL GUARDIAN: VANISH AT A TOUCH</h2>
+                    <p>
+                        Three fingerprints, three worlds. Your thumb unlocks business, your index finger reveals secrets. When danger looms, quantum encryption ensures your privacy vanishes in milliseconds, leaving no trace
+                    </p>
+                    <a href="#" class="pre-order-link">Pre-Order <span class="arrow">→</span></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第七部分：Power That Persists -->
+        <section class="power">
+            <h2>POWER THAT PERSISTS</h2>
+            <p class="power-description">
+                From dawn in Beijing to dusk in Manhattan,your journey continues uninterrupted
+            </p>
+            <div class="power-features">
+                <div class="power-feature">
+                    <h3>4300</h3>
+                    <p>mAh Capacity</p>
+                </div>
+                <div class="power-feature">
+                    <h3>65W</h3>
+                    <p>Flash Charging<br>70% in 20 Minutes</p>
+                </div>
+                <div class="power-feature">
+                    <h3>300%</h3>
+                    <p>Phase-change Coating<br>300% Better Heat Dissipation</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html> 
