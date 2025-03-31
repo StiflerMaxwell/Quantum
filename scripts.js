@@ -199,28 +199,51 @@ document.addEventListener('DOMContentLoaded', function() {
             // 创建场景
             this.scene = new THREE.Scene();
             
+            // 检测是否为移动设备
+            const isMobile = window.innerWidth <= 768;
+            
             // 创建相机
             this.camera = new THREE.PerspectiveCamera(75, this.width / this.height, 0.1, 100);
             this.camera.position.set(0, 0, 1);
             
             // 创建渲染器
             this.renderer = new THREE.WebGLRenderer({ 
-                antialias: true,
-                alpha: true 
+                antialias: !isMobile, // 移动端关闭抗锯齿以提高性能
+                alpha: true,
+                powerPreference: isMobile ? 'low-power' : 'high-performance'
             });
             this.renderer.setSize(this.width, this.height);
-            this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            this.renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
             
             // 添加到DOM
             this.container.appendChild(this.renderer.domElement);
-            this.renderer.domElement.style.position = 'absolute';
-            this.renderer.domElement.style.top = '0';
-            this.renderer.domElement.style.left = '0';
-            this.renderer.domElement.style.zIndex = '2';
-            this.renderer.domElement.style.pointerEvents = 'none';
-            this.renderer.domElement.style.width = '100%';
-            this.renderer.domElement.style.height = '100%';
-            this.renderer.domElement.style.objectFit = 'contain'; // 使用contain模式显示
+            
+            // 设置canvas样式
+            const canvas = this.renderer.domElement;
+            canvas.style.position = 'absolute';
+            canvas.style.top = '0';
+            canvas.style.left = '0';
+            canvas.style.zIndex = '2';
+            canvas.style.pointerEvents = 'none';
+            
+            if (isMobile) {
+                // 移动端样式设置
+                canvas.style.width = 'auto';
+                canvas.style.height = '100%';
+                canvas.style.maxHeight = '600px';
+                canvas.style.objectFit = 'contain';
+                canvas.style.margin = '0 auto';
+                
+                // 确保canvas居中
+                this.container.style.display = 'flex';
+                this.container.style.justifyContent = 'center';
+                this.container.style.alignItems = 'center';
+            } else {
+                // 桌面样式
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                canvas.style.objectFit = 'contain';
+            }
             
             // 加载纹理
             this.textureLoader = new THREE.TextureLoader();
@@ -237,23 +260,36 @@ document.addEventListener('DOMContentLoaded', function() {
             // 使用与容器比例匹配的平面尺寸
             const containerAspect = this.width / this.height;
             
+            // 检测是否为移动设备
+            const isMobile = window.innerWidth <= 768;
+            
             // 平面尺寸以短边为2.0，长边按比例计算
             let planeWidth, planeHeight;
             
-            if (containerAspect >= 1) {
-                // 宽屏，以高度为基准
+            if (isMobile) {
+                // 移动端使用固定比例，根据参考图调整
+                // 根据实际图片比例约为1:2.5
+                planeHeight = 5.0;
+                planeWidth = 2.0;
+                
+                console.log("移动端平面尺寸:", planeWidth, "x", planeHeight, "(比例:", planeWidth/planeHeight, ")");
+            } else if (containerAspect >= 1) {
+                // 桌面端宽屏，以高度为基准
                 planeHeight = 2.0;
                 planeWidth = planeHeight * containerAspect;
+                console.log("桌面端宽屏平面尺寸:", planeWidth, "x", planeHeight, "(比例:", containerAspect, ")");
             } else {
-                // 窄屏，以宽度为基准
+                // 桌面端窄屏，以宽度为基准
                 planeWidth = 2.0;
                 planeHeight = planeWidth / containerAspect;
+                console.log("桌面端窄屏平面尺寸:", planeWidth, "x", planeHeight, "(比例:", containerAspect, ")");
             }
             
-            console.log("平面尺寸:", planeWidth, "x", planeHeight, "(容器比例:", containerAspect, ")");
-            
             // 创建平面几何体 - 使用更多细分以获得更好的变形效果
-            this.planeGeometry = new THREE.PlaneGeometry(planeWidth, planeHeight, 64, 64);
+            // 移动端使用更少的细分提升性能
+            const segmentsX = isMobile ? 32 : 64;
+            const segmentsY = isMobile ? 32 : 64;
+            this.planeGeometry = new THREE.PlaneGeometry(planeWidth, planeHeight, segmentsX, segmentsY);
             
             // 使用增强版着色器材质
             this.planeMaterial = new THREE.ShaderMaterial({
@@ -500,7 +536,15 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         setupEventListeners() {
-            window.addEventListener('mousemove', this.onMouseMove.bind(this));
+            // 检测是否为移动设备
+            const isMobile = window.innerWidth <= 768;
+            
+            if (!isMobile) {
+                // 桌面端保持鼠标移动事件
+                window.addEventListener('mousemove', this.onMouseMove.bind(this));
+            }
+            
+            // 共享事件
             window.addEventListener('resize', this.onResize.bind(this));
             window.addEventListener('scroll', this.onScroll.bind(this));
         }
@@ -563,26 +607,53 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         onScroll() {
+            // 检测是否为移动设备
+            const isMobile = window.innerWidth <= 768;
+            
+            // 更新滚动状态
+            this.startScrolling();
+            
             // 滚动时激活变形效果，增加互动性
-            const scrollSpeed = Math.abs(window.scrollY - (this._lastScrollY || 0)) / 20;
+            const scrollSpeed = Math.abs(window.scrollY - (this._lastScrollY || 0)) / (isMobile ? 10 : 20);
             this._lastScrollY = window.scrollY;
             
             if (scrollSpeed > 0.05) {
+                // 移动端使用更温和的效果强度
+                const effectStrength = isMobile ? Math.min(scrollSpeed * 0.5, 0.6) : Math.min(scrollSpeed * 0.5, 0.8);
+                
                 gsap.to(this.planeMaterial.uniforms.uHoverState, {
-                    value: Math.min(scrollSpeed * 0.5, 0.8),
-                    duration: 0.5,
+                    value: effectStrength,
+                    duration: isMobile ? 0.5 : 0.5,
                     ease: 'power2.out'
                 });
+                
+                // 移动端仅在滚动时激活RGB效果，强度更小
+                if (isMobile) {
+                    gsap.to(this.planeMaterial.uniforms.uRgbIntensity, {
+                        value: Math.min(0.01, scrollSpeed * 0.15),
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                }
                 
                 // 计时器，一段时间后恢复默认状态
                 clearTimeout(this._scrollTimeout);
                 this._scrollTimeout = setTimeout(() => {
                     gsap.to(this.planeMaterial.uniforms.uHoverState, {
-                        value: 0.3,
-                        duration: 1.5,
+                        value: isMobile ? 0.1 : 0.2,
+                        duration: 1.0,
                         ease: 'power2.out'
                     });
-                }, 800);
+                    
+                    // 移动端RGB效果淡出
+                    if (isMobile) {
+                        gsap.to(this.planeMaterial.uniforms.uRgbIntensity, {
+                            value: 0,
+                            duration: 0.5,
+                            ease: 'power2.out'
+                        });
+                    }
+                }, isMobile ? 400 : 800);
             }
         }
         
@@ -590,13 +661,25 @@ document.addEventListener('DOMContentLoaded', function() {
             this.width = this.container.clientWidth || window.innerWidth;
             this.height = this.container.clientHeight || window.innerHeight;
             
+            // 检测是否为移动设备
+            const isMobile = window.innerWidth <= 768;
+            
             // 更新容器宽高比
             const containerAspect = this.width / this.height;
             console.log("窗口调整：容器宽高比更新为", containerAspect);
             
             // 更新uniform
             if(this.planeMaterial && this.planeMaterial.uniforms) {
-                this.planeMaterial.uniforms.uContainerAspect.value = containerAspect;
+                if (isMobile) {
+                    // 移动端使用固定比例以匹配实际图片
+                    // 使用与createPlane一致的比例
+                    const mobileAspect = 2.0/5.0; // 宽高比为0.4，与createPlane保持一致
+                    this.planeMaterial.uniforms.uContainerAspect.value = mobileAspect;
+                    console.log("移动端: 使用固定宽高比", mobileAspect);
+                } else {
+                    this.planeMaterial.uniforms.uContainerAspect.value = containerAspect;
+                    console.log("桌面端: 使用实际容器宽高比", containerAspect);
+                }
             }
             
             this.camera.aspect = this.width / this.height;
@@ -606,31 +689,40 @@ document.addEventListener('DOMContentLoaded', function() {
             this.createPlane();
             
             this.renderer.setSize(this.width, this.height);
-            this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            this.renderer.setPixelRatio(isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
         }
         
         addAutoWave() {
+            // 检测是否为移动设备
+            const isMobile = window.innerWidth <= 768;
+            
+            // 移动端减弱自动波动效果
+            const waveStrength = isMobile ? 0.1 : 0.2;
+            const waveDuration = isMobile ? 5 : 4;
+            
             // 添加自动波动效果，但不添加RGB偏移
             const autoWave = () => {
                 const time = Date.now() * 0.001;
                 
-                // 圆形移动
-                const radius = 0.15;
+                // 移动端减小圆形移动半径
+                const radius = isMobile ? 0.1 : 0.15;
                 const x = Math.cos(time * 0.2) * radius + 0.5;
                 const y = Math.sin(time * 0.25) * radius + 0.5;
                 
-                // 只有当用户不在交互时才应用自动波动
-                if (!this._isUserInteracting) {
+                // 移动端只在不滚动时应用自动波动，降低CPU使用
+                const shouldAnimate = !isMobile || (!this._isUserInteracting && !this._isScrolling);
+                
+                if (shouldAnimate) {
                     gsap.to(this.planeMaterial.uniforms.uMouse.value, {
                         x: x,
                         y: y,
-                        duration: 4,
+                        duration: waveDuration,
                         ease: 'sine.inOut'
                     });
                     
                     gsap.to(this.planeMaterial.uniforms.uHoverState, {
-                        value: 0.2 + Math.sin(time * 0.4) * 0.15 * this.params.strength,
-                        duration: 4,
+                        value: waveStrength + Math.sin(time * 0.4) * 0.1 * this.params.strength,
+                        duration: waveDuration,
                         ease: 'sine.inOut'
                     });
                 }
@@ -647,6 +739,15 @@ document.addEventListener('DOMContentLoaded', function() {
             this.renderer.render(this.scene, this.camera);
             requestAnimationFrame(this.animate.bind(this));
         }
+
+        // 提供滚动状态追踪
+        startScrolling() {
+            this._isScrolling = true;
+            clearTimeout(this._scrollingTimeout);
+            this._scrollingTimeout = setTimeout(() => {
+                this._isScrolling = false;
+            }, 200);
+        }
     }
 
     // 为第一屏添加网格变形效果
@@ -657,68 +758,88 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageUrl = heroBgImage.src;
         console.log("加载网格效果，图片URL:", imageUrl);
         
-        // 创建效果
-        setTimeout(() => {
-            try {
-                console.log("正在创建第一屏网格效果...");
-                
-                // 设置原图样式，确保图片居中
-                heroBgImage.style.position = 'absolute';
-                heroBgImage.style.top = '50%';
-                heroBgImage.style.left = '50%';
-                heroBgImage.style.transform = 'translate(-50%, -50%)';
-                heroBgImage.style.maxWidth = '100%';
-                heroBgImage.style.maxHeight = '100%';
-                heroBgImage.style.width = 'auto';
-                heroBgImage.style.height = 'auto';
-                heroBgImage.style.objectFit = 'contain';
-                
-                // 提前准备Three.js效果的配置
-                const canvasContainer = document.createElement('div');
-                canvasContainer.className = 'canvas-container';
-                canvasContainer.style.position = 'absolute';
-                canvasContainer.style.top = '0';
-                canvasContainer.style.left = '0';
-                canvasContainer.style.width = '100%';
-                canvasContainer.style.height = '100%';
-                canvasContainer.style.display = 'flex';
-                canvasContainer.style.justifyContent = 'center';
-                canvasContainer.style.alignItems = 'center';
-                canvasContainer.style.zIndex = '2';
-                
-                heroSection.appendChild(canvasContainer);
-                
-                // 创建网格效果
-                const heroGridEffect = new GridEffect(canvasContainer, imageUrl);
-                
-                // 确保Three.js Canvas在正确的层级
-                const heroCanvas = canvasContainer.querySelector('canvas');
-                if (heroCanvas) {
-                    console.log("Canvas元素已创建，应用样式");
+        // 检查是否为移动设备
+        const isMobile = window.innerWidth <= 768;
+        
+        if (isMobile) {
+            // 移动端不使用网格效果，仅调整图片样式
+            console.log("移动端：不使用网格效果，保留原始图片");
+            
+            // 设置图片样式
+            heroBgImage.style.position = 'absolute';
+            heroBgImage.style.top = '0';
+            heroBgImage.style.left = '50%';
+            heroBgImage.style.transform = 'translateX(-50%)';
+            heroBgImage.style.width = 'auto';
+            heroBgImage.style.height = '100%';
+            heroBgImage.style.objectFit = 'contain';
+            heroBgImage.style.maxWidth = 'none';
+            heroBgImage.style.minHeight = '100%';
+            heroBgImage.style.opacity = '1';
+        } else {
+            // 桌面端使用网格效果
+            setTimeout(() => {
+                try {
+                    console.log("正在创建第一屏网格效果...");
                     
-                    // 设置Canvas样式，确保内容居中且不失真
-                    heroCanvas.style.position = 'absolute';
-                    heroCanvas.style.top = '50%';
-                    heroCanvas.style.left = '50%';
-                    heroCanvas.style.transform = 'translate(-50%, -50%)';
-                    heroCanvas.style.maxWidth = '100%';
-                    heroCanvas.style.maxHeight = '100%';
-                    heroCanvas.style.width = 'auto';
-                    heroCanvas.style.height = 'auto';
-                    heroCanvas.style.objectFit = 'contain';
+                    // 桌面端样式
+                    heroBgImage.style.position = 'absolute';
+                    heroBgImage.style.top = '50%';
+                    heroBgImage.style.left = '50%';
+                    heroBgImage.style.transform = 'translate(-50%, -50%)';
+                    heroBgImage.style.maxWidth = '100%';
+                    heroBgImage.style.maxHeight = '100%';
+                    heroBgImage.style.width = 'auto';
+                    heroBgImage.style.height = 'auto';
+                    heroBgImage.style.objectFit = 'contain';
                     
-                    // 将原始图片设为完全透明
-                    heroBgImage.style.opacity = '0';
-                } else {
-                    console.log("找不到Canvas元素");
-                    heroBgImage.style.opacity = '1'; // 恢复原始图片
+                    // 提前准备Three.js效果的配置
+                    const canvasContainer = document.createElement('div');
+                    canvasContainer.className = 'canvas-container';
+                    canvasContainer.style.position = 'absolute';
+                    canvasContainer.style.top = '0';
+                    canvasContainer.style.left = '0';
+                    canvasContainer.style.width = '100%';
+                    canvasContainer.style.height = '100%';
+                    canvasContainer.style.display = 'flex';
+                    canvasContainer.style.justifyContent = 'center';
+                    canvasContainer.style.alignItems = 'center';
+                    canvasContainer.style.zIndex = '2';
+                    
+                    heroSection.appendChild(canvasContainer);
+                    
+                    // 创建网格效果
+                    const heroGridEffect = new GridEffect(canvasContainer, imageUrl);
+                    
+                    // 确保Three.js Canvas在正确的层级
+                    const heroCanvas = canvasContainer.querySelector('canvas');
+                    if (heroCanvas) {
+                        console.log("Canvas元素已创建，应用样式");
+                        
+                        // 桌面端Canvas样式
+                        heroCanvas.style.position = 'absolute';
+                        heroCanvas.style.top = '50%';
+                        heroCanvas.style.left = '50%';
+                        heroCanvas.style.transform = 'translate(-50%, -50%)';
+                        heroCanvas.style.maxWidth = '100%';
+                        heroCanvas.style.maxHeight = '100%';
+                        heroCanvas.style.width = 'auto';
+                        heroCanvas.style.height = 'auto';
+                        heroCanvas.style.objectFit = 'contain';
+                        
+                        // 将原始图片设为完全透明
+                        heroBgImage.style.opacity = '0';
+                    } else {
+                        console.log("找不到Canvas元素");
+                        heroBgImage.style.opacity = '1'; // 恢复原始图片
+                    }
+                } catch(error) {
+                    console.error("创建网格效果时出错:", error);
+                    // 如果网格效果失败，显示原始图片
+                    heroBgImage.style.opacity = '1';
                 }
-            } catch(error) {
-                console.error("创建网格效果时出错:", error);
-                // 如果网格效果失败，显示原始图片
-                heroBgImage.style.opacity = '1';
-            }
-        }, 300); // 增加延迟时间确保DOM已完全加载
+            }, 300); // 适度缩短延迟时间
+        }
     } else {
         console.error("找不到hero部分或背景图片元素");
     }

@@ -22,17 +22,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
 </head>
-<body>
+<body style="opacity: 0;">
     <main>
         <!-- 第一部分：Hero Section -->
         <section class="hero">
             <div class="hero-background">
-                <img src="images/hero.webp" alt="Vertu Quantum Flip" class="hero-bg-img" onload="this.dataset.loaded='true'">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="images/mobile/herom.webp">
+                    <img src="images/hero.webp" alt="Vertu Quantum Flip" class="hero-bg-img" onload="this.dataset.loaded='true'">
+                </picture>
             </div>
+            
             <div class="hero-content">
                 <h1 class="vertu-title">VERTU QUANTUM</h1>
                 <p class="subtitle">Quantum Flip, Magic Unfold</p>
             </div>
+
             <div class="pre-order-container">
                 <a href="#" class="pre-order-btn">PRE-ORDER</a>
             </div>
@@ -140,7 +145,7 @@
 
         <!-- 第五部分：VPS Digital Workforce -->
         <section class="vps">
-            <h2>VPS - YOUR 24/7 DIGITAL WORKFORCE</h2>
+            <h2>VPS: YOUR 24/7 DIGITAL WORKFORCE</h2>
             <div class="vps-content">
                 <div class="vps-description">
                     <p>
@@ -166,46 +171,81 @@
             </div>
         </section>
 
-        <!-- 第六部分：Art of Discretion -->
-        <section class="discretion">
-            <h2>THE ART OF DISCRETION</h2>
-            <div class="discretion-content">
-                <div class="phone-security-img">
-                    <img src="phone-security.png" alt="Vertu Quantum">
-                </div>
-                <div class="security-content">
-                    <h2>CONFIDENTIAL GUARDIAN: VANISH AT A TOUCH</h2>
-                    <p>
-                        Three fingerprints, three worlds. Your thumb unlocks business, your index finger reveals secrets. When danger looms, quantum encryption ensures your privacy vanishes in milliseconds, leaving no trace
-                    </p>
-                    <a href="#" class="pre-order-link">Pre-Order <span class="arrow">→</span></a>
+        <!-- 相机功能展示部分 -->
+        <section class="camera-showcase">
+            <h2>AI DARKROOM MASTER: BEAUTIFYING TIME</h2>
+            <div class="camera-features-container">
+                <div class="camera-features">
+                    <div class="horizontal-line-container">
+                        <div class="horizontal-line"></div>
+                        <div class="dot-point"></div>
+                    </div>
+                    <ul class="feature-list">
+                        <li><span class="bullet">•</span> 50MP AI dual camera system</li>
+                        <li><span class="bullet">•</span> OIS + EIS stabilization</li>
+                        <li><span class="bullet">•</span> Millisecond AI subject isolation</li>
+                        <li><span class="bullet">•</span> Cinematic portrait engine</li>
+                        <li><span class="bullet">•</span> Professional results, effortless capture</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <!-- 第七部分：Power That Persists -->
-        <section class="power">
-            <h2>POWER THAT PERSISTS</h2>
-            <p class="power-description">
-                From dawn in Beijing to dusk in Manhattan,your journey continues uninterrupted
-            </p>
-            <div class="power-features">
-                <div class="power-feature">
-                    <h3>4300</h3>
-                    <p>mAh Capacity</p>
-                </div>
-                <div class="power-feature">
-                    <h3>65W</h3>
-                    <p>Flash Charging<br>70% in 20 Minutes</p>
-                </div>
-                <div class="power-feature">
-                    <h3>300%</h3>
-                    <p>Phase-change Coating<br>300% Better Heat Dissipation</p>
+        <!-- 卫星通信部分 -->
+        <section class="satellite-communication">
+            <h2>BEYOND EARTH'S BOUNDARIES</h2>
+            <p class="satellite-description">Satellite Communication: Protection Without Distance. When terrestrial networks fade, we reach for the stars</p>
+            <div class="satellite-features-container">
+                <div class="satellite-features">
+                    <div class="feature-box">
+                        <div class="feature-item">
+                            <h3>24/7</h3>
+                            <p>Global satellite messaging</p>
+                        </div>
+                        <div class="feature-divider"></div>
+                        <div class="feature-item">
+                            <h3>800 Ms</h3>
+                            <p>delivers your presence</p>
+                        </div>
+                        <div class="feature-divider"></div>
+                        <div class="feature-item">
+                            <h3>Video calls</h3>
+                            <p>Video calls everywhere</p>
+                        </div>
+                        <div class="feature-divider"></div>
+                        <div class="feature-item">
+                            <h3>Precision</h3>
+                            <p>Emergency positioning within 0.5 meters</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+        
+        <!-- AI翻译部分 -->
+        <section class="ai-translator">
+            <div class="translator-container">
+                <div class="translator-image">
+                    <!-- 背景图片通过CSS设置 -->
+                </div>
+                <div class="translator-content">
+                    <h2>THE AI TRANSLATOR</h2>
+                    <p class="translator-description">Your ultimate negotiation ally. While the outer 
+                        screen maintains diplomacy, the inner screen 
+                        reveals truth. 45 languages, 99.3% accuracy, 
+                        and legal-term precision make every 
+                        conversation count.</p>
+                </div>
+            </div>
+        </section>
+             
     </main>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
     <script src="scripts.js"></script>
+    <script src="animations.js"></script>
+    <!-- <script src="new_animations.js"></script> 保留但不启用 -->
 </body>
 </html> 
