@@ -116,14 +116,14 @@ img {
 }
 
 .vertu-title {
-    font-family: EngraversGothic BT, 'Roboto', Arial, sans-serif;
+    font-family: 'vertu-en';
     font-size: 48px;
     font-weight: 400;
     line-height: 51px;
     letter-spacing: 1px;
     text-align: center;
     text-transform: uppercase;
-    background: linear-gradient(0deg, rgb(0, 0, 0), rgb(255, 255, 255));
+    background: linear-gradient(0.00deg, rgb(0, 0, 0), rgb(255, 255, 255));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -136,7 +136,7 @@ img {
 }
 
 .subtitle {
-    font-family: 'Akzidenz-Grotesk Pro', Arial, sans-serif;
+    font-family: 'vertu-ak', Arial, sans-serif;
     font-size: 18px;
     font-weight: 300;
     line-height: 18px;
@@ -236,7 +236,7 @@ img {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     text-fill-color: transparent;
-    font-family: EngraversGothic BT;
+    font-family: 'vertu-en';
     font-size: 32px;
     font-weight: 400;
     line-height: 34px;
@@ -250,7 +250,7 @@ img {
     max-width: 900px;
     margin: 0 auto;
     color: rgb(255, 255, 255);
-    font-family: 'Akzidenz-Grotesk Pro', sans-serif;
+    font-family: 'vertu-ak', sans-serif;
     font-size: 18px;
     font-weight: 300;
     line-height: 25px;
@@ -375,7 +375,6 @@ img {
         transform: none;
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
     }
     
     /* 美丽力量部分布局优化 */
@@ -398,7 +397,7 @@ img {
     
     .beauty-description {
         color: rgb(170, 170, 170);
-        font-family: 'Akzidenz-Grotesk Pro', sans-serif;
+        font-family: 'vertu-ak', sans-serif;
         font-size: 14px;
         font-weight: 400;
         line-height: 18px;
@@ -420,7 +419,7 @@ img {
     }
     
     .beauty-img {
-        content: url('images/mobile/beautym.webp');
+        content: url('https://vertu-website-oss.vertu.com/2025/04/beautym.webp');
         width: 100%;
         height: auto;
         max-width: none;
@@ -492,53 +491,769 @@ img {
         width: 100%;
         object-fit: contain;
         max-width: 100%;
+        content: url('https://vertu-website-oss.vertu.com/2025/04/snapdragonm.webp');
     }
     
-    /* 工程艺术部分布局优化 */
-    .engineering {
-        flex-direction: column;
-        padding: 60px 15px;
+    /* 工程艺术部分布局优化 - 完全重写 */
+    section.engineering {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 60px 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+        left: 0;
+        transform: none;
+        background-color: transparent;
     }
     
-    .engineering-display {
-        width: 100%;
-        margin-bottom: 30px;
+    section.engineering .engineering-display {
+        width: 100% !important;
+        margin: 0 auto 40px;
         text-align: center;
         justify-content: center;
-        padding-right: 0;
+        padding: 0 20px !important;
+        box-sizing: border-box;
     }
     
-    .engineering-display img {
+    section.engineering .engineering-display img {
+        content: url('https://vertu-website-oss.vertu.com/2025/04/artdetailm.webp');
         width: 100%;
         max-width: 100%;
-        height: auto;
+        height: auto !important;
         margin: 0 auto;
         display: block;
     }
     
-    .engineering-content {
-        width: 100%;
-        padding: 0;
+    section.engineering .engineering-content {
+        width: 100% !important;
+        padding: 0 20px !important;
+        text-align: left !important;
+        box-sizing: border-box;
+        margin: 0 auto;
     }
     
-    .engineering-features li {
+    section.engineering .engineering-content h2 {
+        padding: 0 !important;
+    }
+    
+    section.engineering h2 {
+        text-align: left !important;
+        margin-bottom: 20px;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        font-size: 24px;
+    }
+    
+    section.engineering .engineering-subtitle {
+        text-align: left !important;
+        color: rgb(134, 134, 139);
+        font-family: 'vertu-ak', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0px;
+        text-transform: capitalize;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        margin-bottom: 25px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    section.engineering .engineering-features {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+    
+    section.engineering .engineering-features li {
         font-size: 14px;
         line-height: 1.6;
         margin-bottom: 15px;
+        text-align: left;
+        padding: 0 !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
     }
     
-    /* 相机展示部分布局优化 */
-    .camera-showcase {
-        
+    section.engineering .engineering-features li:before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        min-width: 6px;
+        background: rgb(255, 255, 255);
+        display: block;
+        margin-right: 10px;
+        border-radius: 50%;
+        margin-top: 8px;
+        flex-shrink: 0;
+    }
+    
+    /* 相机展示部分布局优化 - 参照第四部分 */
+    section.camera-showcase {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 60px 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+        left: 0;
+        transform: none;
+        background-color: transparent;
+    }
+    
+    .camera-features-container {
+        background-image: none !important;
+        position: relative;
+        width: 100% !important;
+        margin: 0 auto 40px;
+        margin-top: 0;
+        text-align: center;
+        justify-content: center;
+        padding: 0 !important;
+        box-sizing: border-box;
+        height: auto !important;
+        min-height: auto !important;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    
+    .camera-features-container:before {
+        content: "";
+        display: block;
+        width: 100%;
+        background-image: url('https://vertu-website-oss.vertu.com/2025/04/cameram.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: auto;
+        padding-top: 100%;
+        margin: 0 auto;
+    }
+
+    .camera-features {
+        position: relative;
+        width: 100% !important;
+        padding: 0 !important;
+        text-align: left !important;
+        box-sizing: border-box;
+        margin: 30px auto 0;
+        background-color: transparent !important;
+        order: unset;
+        display: block;
+    }
+    
+    .camera-showcase h2 {
+        text-align: center !important;
+        margin-bottom: 30px;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        font-size: 24px;
+        padding: 0 20px;
+    }
+    
+    /* 隐藏横线和点 */
+    .horizontal-line-container {
+        display: none !important;
+    }
+    
+    .feature-list {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
     }
     
     .feature-list li {
+        font-size: 16px;
+        line-height: 21px;
+        margin-bottom: 15px;
+        text-align: left;
+        padding: 0 !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        color: rgb(255, 255, 255);
+        font-family: 'vertu-ak', sans-serif;
+        font-weight: 400;
+        letter-spacing: 0px;
+    }
+    
+    /* 恢复bullet点，参照第四部分样式 */
+    .bullet {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    
+    .feature-list li:before {
+        content: none;
+    }
+    
+    /* 卫星通信部分 - 参照相机部分布局 */
+    .satellite-communication {
+        padding: 60px 0;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+        left: 0;
+        transform: none;
+        background-color: transparent;
+    }
+    
+    .satellite-communication h2 {
+        padding: 0 !important;
+    }
+    
+    .satellite-description {
+        font-size: 14px;
+        line-height: 1.6;
+        width: 100%;
+        margin: 20px auto 40px;
+        padding: 0 !important;
+    }
+    
+    .satellite-features-container {
+        background-image: none !important;
+        position: relative;
+        width: 100% !important;
+        margin: 0 auto 40px;
+        margin-top: 0;
+        text-align: center;
+        justify-content: center;
+        padding: 0 !important;
+        box-sizing: border-box;
+        height: auto !important;
+        min-height: auto !important;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    
+    .satellite-features-container:before {
+        content: "";
+        display: block;
+        width: 100%;
+        background-image: url('https://vertu-website-oss.vertu.com/2025/04/satellitem.webp');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: auto;
+        min-height: 500px;
+        padding-top: 0;
+        margin: 0 auto;
+    }
+    
+    .satellite-features {
+        position: relative;
+        width: 100% !important;
+        padding: 0 20px !important;
+        text-align: left !important;
+        box-sizing: border-box;
+        margin: 32px auto 0;
+        background-color: transparent !important;
+        order: unset;
+        display: block;
+        max-width: 100% !important;
+        overflow: visible;
+    }
+    
+    .feature-box {
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto;
+        margin: 0;
+        box-sizing: border-box;
+        overflow: visible;
+    }
+    
+    .feature-item {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 10px 0;
+        margin-bottom: 15px;
+        text-align: left !important;
+        box-sizing: border-box;
+        overflow: hidden;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+    
+    .feature-item h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+        text-align: left !important;
+    }
+    
+    .feature-item p {
+        font-size: 14px;
+        text-align: left !important;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* AI翻译部分布局优化 */
+    section.ai-translator {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 60px 0 90px !important; /* 增加底部内边距 */
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+        left: 0;
+        transform: none;
+        background-color: transparent;
+    }
+    
+    .translator-container {
+        flex-direction: column !important;
+        height: auto !important;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .translator-image {
+        width: 100% !important;
+        height: auto !important;
+        padding-top: 120% !important; /* 保留增加的高度比例 */
+        margin-bottom: 30px;
+        background-image: url('https://vertu-website-oss.vertu.com/2025/04/translatem.webp') !important;
+        background-size: cover !important; /* 改为cover确保图片填满容器 */
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 450px !important; /* 保留最小高度 */
+        position: relative;
+    }
+    
+    .translator-content {
+        width: 100% !important;
+        padding: 0 20px !important;
+        text-align: center;
+        max-width: 100%;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .translator-content h2 {
+        text-align: center !important;
+        margin-bottom: 30px !important;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        display: block;
+    }
+    
+    .translator-description {
+        max-width: 100%;
+        font-size: 16px;
+        line-height: 21px;
+        text-align: left !important;
+        margin: 0;
+        padding: 0 10px;
+        display: block;
+        white-space: normal !important;
+    }
+    
+    .translator-arabic {
+        justify-content: center;
+        margin-top: 50px;
+        display: flex;
+        width: 100%;
+    }
+    
+    /* 统一所有移动端h2样式 */
+    h2, 
+    .encryption h2, 
+    .beauty-title h2, 
+    .satellite-communication h2, 
+    .translator-content h2, 
+    .camera-showcase h2,
+    .vps h2 {
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 26px;
+        letter-spacing: 0px;
+        text-align: center;
+        text-transform: uppercase;
+        height: auto;
+        margin-bottom: 20px;
+        white-space: normal;
+        background: linear-gradient(180.00deg, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        padding: 0 20px;
+    }
+    
+    /* 专门为camera-showcase h2设置更高优先级的样式 */
+    section.camera-showcase h2 {
+        padding: 0 20px !important;
+    }
+    
+    /* VPS部分移动端样式 - 完全覆盖 */
+    .vps-stats {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 40px !important;
+        padding-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    .stat {
+        text-align: left !important;
+        width: auto !important;
+        padding: 0 !important;
+        margin-left: 0 !important;
+    }
+    
+    .stat h3 {
+        text-align: left !important;
+        font-size: 36px !important;
+    }
+    
+    .more-than, .non-stop {
+        text-align: left !important;
+    }
+    
+    section.vps .vps-content {
+        padding: 0 20px;
+    }
+    
+    /* VPS部分整体间距调整 */
+    section.vps {
+        padding: 60px 0 40px;
+    }
+    
+    section.vps h2 {
+        margin-bottom: 40px;
+    }
+    
+    /* VPS部分移动端样式 - 高特异性选择器（不影响PC端） */
+    section.vps .vps-content .vps-description,
+    body main section.vps .vps-content .vps-description {
+        max-width: 100%;
+        margin: 30px auto 40px;
+        padding: 0;
+        width: 100%;
+    }
+    
+    /* 更高优先级的工程艺术标题样式 */
+    section.engineering h2.engineering-title,
+    section.engineering h2 {
+        text-align: left !important;
+    }
+    
+    /* 专门为camera-showcase h2设置更高优先级的样式 */
+    section.camera-showcase h2 {
+        padding: 0 20px !important;
+    }
+    
+    /* 修改.hero-content位置 */
+    .hero-content {
+        top: 7%;
+    }
+    
+    /* 修改vertu-title在移动端的字体大小和padding */
+    .vertu-title {
+        font-size: 32px;
+        line-height: 36px;
+        padding: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    /* 相机展示部分小屏幕适配 */
+    section.camera-showcase {
+        padding: 40px 0 !important;
+    }
+    
+    .camera-features-container {
+        padding: 0 !important;
+    }
+    
+    .camera-features-container:before {
+        padding-top: 120%;
+    }
+    
+    .camera-features {
+        margin-top: 20px;
+    }
+    
+    .feature-list li {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    /* 全局样式控制 */
+    body, main {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    section {
+        width: 100%; 
+        max-width: 100%;
+        padding: 40px 0;
+        overflow-x: hidden;
+        left: 0;
+        transform: none;
+    }
+    
+    .power-beauty, .ai-translator, .encryption, .vps, .camera-showcase {
+        left: 0;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .beauty-content {
+        flex-direction: column;
+    }
+    
+    .beauty-title {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .beauty-description {
+        color: rgb(170, 170, 170);
+        font-family: 'vertu-ak', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0px;
+        text-align: center;
+        text-transform: capitalize;
+        margin-bottom: 40px;
+        padding: 0 15px;
+    }
+    
+    .beauty-phone {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        text-align: center;
+        margin-bottom: 40px;
+        overflow: hidden;
+    }
+    
+    .beauty-img {
+        content: url('https://vertu-website-oss.vertu.com/2025/04/beautym.webp');
+        width: 100%;
+        height: auto;
+        max-width: none;
+        margin: 0;
+        object-fit: cover;
+    }
+    
+    .beauty-features {
+        width: 100%;
+        padding: 0 15px;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+        grid-gap: 25px;
+    }
+    
+    /* 量子加密部分布局优化 */
+    .encryption {
+        padding: 40px 15px;
+        margin-top: 40px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        left: 0;
+        transform: none;
+    }
+    
+    .encryption h2 {
+        height: auto;
+        min-height: auto;
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 20px;
+        padding: 0 10px;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    .encryption h2 span {
+        display: block;
+        background: linear-gradient(180.00deg, rgb(255, 250, 250), rgba(255, 250, 250, 0));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+    }
+    
+    .encryption h2 span.first-line {
+        margin-bottom: 5px;
+    }
+    
+    .encryption h2 span.second-line {
+        background: linear-gradient(180.00deg, rgb(255, 250, 250), rgba(255, 250, 250, 0));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+    }
+    
+    .processor-display {
+        width: 100%;
+        margin-bottom: 30px;
+        overflow: hidden;
+    }
+    
+    .processor-img {
+        width: 100%;
+        object-fit: contain;
+        max-width: 100%;
+        content: url('https://vertu-website-oss.vertu.com/2025/04/snapdragonm.webp');
+    }
+    
+    /* 工程艺术部分布局优化 - 完全重写 */
+    section.engineering {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 60px 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden;
+        left: 0;
+        transform: none;
+        background-color: transparent;
+    }
+    
+    section.engineering .engineering-display {
+        width: 100% !important;
+        margin: 0 auto 40px;
+        text-align: center;
+        justify-content: center;
+        padding: 0 20px !important;
+        box-sizing: border-box;
+    }
+    
+    section.engineering .engineering-display img {
+        content: url('https://vertu-website-oss.vertu.com/2025/04/artdetailm.webp');
+        width: 100%;
+        max-width: 100%;
+        height: auto !important;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    section.engineering .engineering-content {
+        width: 100% !important;
+        padding: 0 20px !important;
+        text-align: left !important;
+        box-sizing: border-box;
+        margin: 0 auto;
+    }
+    
+    section.engineering .engineering-content h2 {
+        padding: 0 !important;
+    }
+    
+    section.engineering h2 {
+        text-align: left !important;
+        margin-bottom: 20px;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        font-size: 24px;
+    }
+    
+    section.engineering .engineering-subtitle {
+        text-align: left !important;
+        color: rgb(134, 134, 139);
+        font-family: 'vertu-ak', sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0px;
+        text-transform: capitalize;
+        max-width: 100%;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        margin-bottom: 25px;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    section.engineering .engineering-features {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+    
+    section.engineering .engineering-features li {
         font-size: 14px;
         line-height: 1.6;
         margin-bottom: 15px;
+        text-align: left;
+        padding: 0 !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
     }
     
-    /* 卫星通信部分布局优化 */
+    section.engineering .engineering-features li:before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: rgb(255, 255, 255);
+        display: inline-block;
+        margin-right: 10px;
+        border-radius: 50%;
+        margin-top: 10px;
+    }
+    
+    /* 卫星通信部分 */
     .satellite-communication {
         padding: 60px 15px;
     }
@@ -551,152 +1266,129 @@ img {
     }
     
     .satellite-features {
-        width: 100%;
-        max-width: 100%;
+        width: 100% !important;
+        margin-top: 32px !important;
+        align-items: flex-start;
+        flex-direction: column !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        display: block !important;
+        padding: 0 20px !important;
+        max-width: 100% !important;
+        overflow: visible;
     }
     
     .feature-box {
-        padding: 25px 15px;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
     }
     
     .feature-item {
-        padding: 10px;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+        display: block !important;
+        box-sizing: border-box;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow: hidden;
     }
     
     .feature-item h3 {
-        font-size: 20px;
-        margin-bottom: 5px;
+        text-align: left !important;
     }
     
     .feature-item p {
+        text-align: left !important;
+    }
+    
+    /* AI翻译部分布局优化 */
+    section.ai-translator {
+        padding: 40px 0 70px !important;
+    }
+    
+    .translator-image {
+        min-height: 350px !important; /* 保留小屏幕最小高度 */
+        background-size: cover !important;
+    }
+    
+    .translator-description {
         font-size: 14px;
+        line-height: 19px;
+        display: block;
     }
     
-    /* Hero部分 */
-    .hero {
-        height: 600px;
-        min-height: auto;
-        align-items: center;
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    /* VPS部分 */
+    .vps-content {
+        padding: 0 20px;
     }
     
-    .hero-content {
-        top: 5%;
-        z-index: 10;
-        position: relative;
+    .vps-description p {
+        font-size: 18px;
+        line-height: 26px;
     }
     
-    .hero-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-        overflow: hidden;
+    .camera-features-container {
+        background-position: center !important;
+        background-size: contain !important;
+        background-repeat: no-repeat !important;
+        height: auto !important;
     }
     
-    .hero-bg-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        max-width: none;
-        max-height: none;
+    .camera-features {
+        background-color: transparent !important;
+        padding: 0 20px !important;
     }
     
-    /* 调整图片容器和Canvas位置 */
-    .canvas-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2;
-        overflow: hidden;
+    .camera-showcase h2 {
+        font-size: 24px;
+        padding-top: 30px;
+        padding-bottom: 20px;
     }
     
-    /* 取消Canvas的自定义尺寸限制 */
-    .canvas-container canvas {
-        width: auto !important;
-        height: 100% !important;
-        object-fit: contain !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        max-width: none !important;
-        min-height: 100% !important;
+    .feature-list li {
+        font-size: 14px;
+        margin-bottom: 16px;
     }
     
-    .pre-order-container {
-        position: absolute;
-        bottom: 10%;
-        z-index: 3;
-        width: 100%;
-        text-align: center;
+    .horizontal-line {
+        width: 200px;
     }
     
-    .pre-order-btn {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    .vertu-title {
-        font-size: 32px;
-        line-height: 36px;
-    }
-    
-    .subtitle {
-        font-size: 16px;
-        line-height: 18px;
-        opacity: 1;
-        transform: translateY(0);
-    }
-    
-    .phone-hero-img {
-        content: url('images/mobile/hero-phonem.webp');
-        width: auto;
-        max-height: 50vh;
-        object-fit: contain;
-    }
-    
-    /* 其他已有移动端样式... */
-    .beauty-img {
-        content: url('images/mobile/beautym.webp');
-        width: auto;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    
-    /* 卫星通信部分 */
+    /* 卫星通信部分背景图片替换 */
     .satellite-features-container {
-        background-image: url('images/mobile/satellitem.webp');
-        background-size: cover;
+        background-image: none;
+        position: relative;
+        align-items: center !important;
+    }
+    
+    .satellite-features-container:before {
+        content: "";
+        display: block;
+        width: 100%;
+        padding: 0;
+        box-sizing: border-box;
+        background-image: url('https://vertu-website-oss.vertu.com/2025/04/satellitem.webp');
+        background-size: contain;
         background-position: center;
+        background-repeat: no-repeat;
         height: auto;
-        min-height: 600px;
-        align-items: flex-end;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-bottom: 40px;
-        justify-content: center;
+        min-height: 500px;
+        order: 1;
     }
     
     .feature-box {
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 25px 15px;
+        padding: 25px 0;
         width: 100%;
         height: auto;
         justify-content: space-between;
@@ -728,108 +1420,18 @@ img {
     
     .satellite-features {
         width: 100%;
+        margin-top: 32px !important;
+        align-items: center;
+        flex-direction: row !important;
     }
     
     /* AI翻译部分布局优化 */
-    .ai-translator {
-        padding: 60px 15px;
-        left: 0;
-        transform: none;
-        width: 100%;
-    }
-    
-    .translator-container {
-        flex-direction: column;
-        height: auto;
+    section.ai-translator {
+        padding: 40px 0;
     }
     
     .translator-image {
-        width: 100%;
-        height: 250px;
-        margin-bottom: 30px;
-        background-image: url('images/mobile/translatorm.webp');
-    }
-    
-    .translator-content {
-        width: 100%;
-        padding: 0;
-    }
-    
-    .translator-description {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-    
-    /* 相机功能展示部分 */
-    .camera-features-container {
-        background-image: url('images/mobile/cameram.webp');
-        height: auto;
-        min-height: 500px;
-    }
-    
-    /* VPS部分 */
-    .vps-content {
-        padding: 0 20px;
-    }
-    
-    .vps-description p {
-        font-size: 18px;
-        line-height: 26px;
-    }
-    
-    .camera-features-container {
-        background-position: center;
-        background-size: cover;
-        height: 100vh;
-    }
-    
-    .camera-features {
-        padding-left: 10%;
-        width: 60%;
-        margin-top: 30px;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 20px;
-    }
-    
-    .camera-showcase h2 {
-        font-size: 24px;
-        padding-top: 30px;
-        padding-bottom: 20px;
-    }
-    
-    .feature-list li {
-        font-size: 14px;
-        margin-bottom: 16px;
-    }
-    
-    .horizontal-line {
-        width: 200px;
-    }
-    
-    /* 美丽力量部分背景图片替换 */
-    .beauty-phone .beauty-img {
-        content: url('images/mobile/beautym.webp');
-        width: auto;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    
-    /* 处理器部分背景图片替换 */
-    .processor-display .processor-img {
-        content: url('images/mobile/snapdragonm.webp');
-        width: auto;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    
-    /* 相机展示部分背景图片替换 */
-    .camera-showcase {
-        
-    }
-    
-    /* 为AI翻译部分替换背景图片 */
-    .translator-image {
-        background-image: url('images/mobile/translatorm.webp');
+        background-image: url('https://vertu-website-oss.vertu.com/2025/04/translatem.webp');
     }
     
     /* 统一所有移动端h2样式 */
@@ -839,7 +1441,6 @@ img {
     .satellite-communication h2, 
     .translator-content h2, 
     .camera-showcase h2,
-    .engineering h2,
     .vps h2 {
         font-size: 24px;
         font-weight: 400;
@@ -850,306 +1451,98 @@ img {
         height: auto;
         margin-bottom: 20px;
         white-space: normal;
-        background: linear-gradient(180.00deg, rgb(255, 250, 250), rgba(255, 250, 250, 0));
+        background: linear-gradient(180.00deg, rgb(255, 255, 255), rgba(255, 255, 255, 0));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         text-fill-color: transparent;
+        padding: 0 20px;
     }
-}
+    
+    /* 专门为camera-showcase h2设置更高优先级的样式 */
+    section.camera-showcase h2 {
+        padding: 0 20px !important;
+    }
 
-@media (max-width: 576px) {
-    /* 全局样式控制 */
-    body, main {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
+    /* 专门为camera-showcase h2设置更高优先级的样式 */
+    section.translator-content h2 {
+       text-align: center !important;
+    }
+
+    
+    /* VPS部分移动端样式 - 完全覆盖 */
+    .vps-stats {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 40px !important;
+        padding-left: 0 !important;
+        width: 100% !important;
     }
     
-    section {
-        width: 100%; 
-        max-width: 100%;
-        padding: 40px 0;
-        overflow-x: hidden;
-        left: 0;
-        transform: none;
-    }
-    
-    .encryption {
-        padding: 40px 15px;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        margin-top: 40px;
-    }
-    
-    /* Hero部分 */
-    .hero {
-        height: 100vh;
-        min-height: 640px;
-    }
-    
-    .hero-content {
-        top: 5%;
-    }
-    
-    .vertu-title {
-        font-size: 28px;
-        line-height: 32px;
-    }
-    
-    .subtitle {
-        font-size: 14px;
-        margin-top: 5px;
-    }
-    
-    .pre-order-container {
-        bottom: 8%;
-    }
-    
-    .pre-order-btn {
-        height: 36px;
-        line-height: 36px;
-        padding: 0 20px;
-    }
-    
-    /* 美丽力量部分小屏幕适配 */
-    .beauty-phone .beauty-img,
-    .processor-display .processor-img,
-    .engineering-display img {
-        max-width: 100%;
-        width: 100%;
-    }
-    
-    .beauty-feature {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .beauty-img {
-        height: auto;
-        width: 100%;
-    }
-    
-    .beauty-title {
-        padding-top: 40px;
-        padding-bottom: 20px;
-    }
-    
-    .beauty-description {
-        padding: 0 20px;
-        margin-bottom: 30px;
-    }
-    
-    .feature-text p {
-        font-size: 14px;
-    }
-    
-    .camera-showcase {
-        
-    }
-    
-    .camera-features-container {
-        height: 70vh;
-        background-position: center;
-    }
-    
-    .camera-features {
-        width: 100%;
-        padding: 15px;
-        background-color: rgba(0, 0, 0, 0.7);
-        margin-top: 0;
-    }
-    
-    .camera-showcase h2 {
-        font-size: 24px;
-        padding-top: 30px;
-        padding-bottom: 20px;
-    }
-    
-    .feature-list li {
-        font-size: 14px;
-        margin-bottom: 16px;
-    }
-    
-    .horizontal-line {
-        width: 200px;
-    }
-    
-    /* 卫星通信部分小屏幕适配 */
-    .satellite-communication h2 {
-        font-size: 24px;
-    }
-    
-    .satellite-description {
-        font-size: 13px;
-        line-height: 1.5;
-        padding: 0 10px;
-        margin-bottom: 30px;
-    }
-    
-    .satellite-features-container {
-        min-height: 550px;
-    }
-    
-    .feature-box {
-        padding: 20px 15px;
-    }
-    
-    .feature-item {
-        width: 100%;
-        margin-bottom: 15px;
-        padding: 8px 5px;
-    }
-    
-    .feature-item h3 {
-        font-size: 20px;
-        margin-bottom: 4px;
-    }
-    
-    .feature-item p {
-        font-size: 13px;
-    }
-    
-    .feature-divider {
-        height: 30px;
-        margin: 10px 0;
-    }
-    
-    /* AI翻译部分小屏幕适配 */
-    .ai-translator {
-        padding: 40px 15px;
-    }
-    
-    .translator-image {
-        height: 200px;
-    }
-    
-    .translator-content h2 {
-        font-size: 24px;
-    }
-    
-    /* 通用小屏幕适配 */
-    .satellite-description,
-    .translator-description {
-        font-size: 13px;
-        line-height: 1.5;
-        padding: 0 10px;
-    }
-    
-    .beauty-description {
-        color: rgb(170, 170, 170);
-        font-family: 'Akzidenz-Grotesk Pro', sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        line-height: 17px;
-        letter-spacing: 0px;
-        text-align: center;
-        text-transform: capitalize;
-        padding: 0 15px;
-    }
-    
-    .engineering-features li {
-        font-size: 13px;
-        line-height: 1.5;
-    }
-    
-    h2 {
-        font-size: 22px;
-        margin-bottom: 15px;
-    }
-    
-    .vps-description p {
-        font-size: 14px;
-        line-height: 1.6;
+    .stat {
+        text-align: left !important;
+        width: auto !important;
+        padding: 0 !important;
+        margin-left: 0 !important;
     }
     
     .stat h3 {
-        font-size: 28px;
+        text-align: left !important;
+        font-size: 36px !important;
     }
     
     .more-than, .non-stop {
-        font-size: 13px;
+        text-align: left !important;
     }
     
-    /* 处理器部分小屏幕适配 */
-    .processor-item {
-        width: 100%;
-        max-width: 280px;
-        margin: 0 auto 20px;
-        text-align: center;
+    section.vps .vps-content {
+        padding: 0 20px;
     }
     
-    .processor-item h3 {
-        font-size: 18px;
-        text-align: center;
-        margin-bottom: 4px;
+    /* VPS部分整体间距调整 */
+    section.vps {
+        padding: 60px 0 40px;
     }
     
-    .processor-item p {
-        font-size: 13px;
-        line-height: 1.5;
-        text-align: center;
+    section.vps h2 {
+        margin-bottom: 40px;
     }
     
-    .encryption h2 span.first-line,
-    .encryption h2 span.second-line {
-        background: linear-gradient(180.00deg, rgb(255, 250, 250), rgba(255, 250, 250, 0));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
-        display: block;
-    }
-    
-    .encryption h2 span.first-line {
-        margin-bottom: 5px;
-    }
-    
-    .encryption-description {
-        color: rgb(170, 170, 170);
-        font-family: 'Akzidenz-Grotesk Pro', sans-serif;
-        font-size: 13px;
-        font-weight: 400;
-        line-height: 17px;
-        letter-spacing: 0px;
-        text-align: center;
-        text-transform: capitalize;
-        padding: 0 15px;
-    }
-    
-    /* 小屏幕下h2样式 */
-    h2, 
-    .encryption h2, 
-    .beauty-title h2, 
-    .satellite-communication h2, 
-    .translator-content h2, 
-    .camera-showcase h2,
-    .engineering h2,
-    .vps h2 {
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 26px;
-        letter-spacing: 0px;
-        text-align: center;
-        text-transform: uppercase;
-        height: auto;
-        min-height: auto;
-        margin-bottom: 20px;
-        white-space: normal;
-        background: linear-gradient(180.00deg, rgb(255, 250, 250), rgba(255, 250, 250, 0));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
-    }
-    
-    /* 工程艺术部分小屏幕适配 */
-    .engineering-display img {
+    /* VPS部分移动端样式 - 高特异性选择器（不影响PC端） */
+    section.vps .vps-content .vps-description,
+    body main section.vps .vps-content .vps-description {
         max-width: 100%;
+        margin: 30px auto 40px;
+        padding: 0;
         width: 100%;
-        height: auto;
-        object-fit: contain;
+    }
+    
+    section.vps .vps-content .vps-description p,
+    body main section.vps .vps-content .vps-description p {
+        color: rgb(255, 255, 255) !important;
+        font-family: 'vertu-ak', sans-serif !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        line-height: 21px !important;
+        letter-spacing: 0px !important;
+        text-align: left !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    /* ... existing code ... */
+    
+    /* AI翻译部分布局优化 */
+    section.ai-translator .translator-content {
+        justify-content: center !important;
+    }
+    
+    section.ai-translator .translator-description {
+        text-align: left !important;
+        font-size: 14px;
+        line-height: 19px;
     }
 }
 
@@ -1207,7 +1600,7 @@ img {
 
 .feature-item h3 {
     color: rgb(255, 255, 255);
-    font-family: 'Akzidenz-Grotesk Pro', Arial, sans-serif;
+    font-family: 'vertu-ak', Arial, sans-serif;
     font-size: 24px;
     font-weight: 500;
     line-height: 29px;
@@ -1274,7 +1667,7 @@ img {
     line-height: 34px;
     letter-spacing: 0px;
     margin-bottom: 30px;
-    font-family: EngraversGothic BT, 'Roboto', Arial, sans-serif;
+    font-family: 'vertu-en', 'Roboto', Arial, sans-serif;
 }
 
 .encryption h2 span {
@@ -1404,7 +1797,7 @@ img {
 
 .phone-detail-img {
     width: 600px;
-    height: 700px;
+    height: 700px !important;
     object-fit: cover;
     object-position: center;
     filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.25));
@@ -1437,7 +1830,7 @@ img {
 }
 
 .engineering-subtitle {
-    font-family: 'Akzidenz-Grotesk Pro', sans-serif;
+    font-family: 'vertu-ak', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 21px;
@@ -1469,11 +1862,14 @@ img {
 }
 
 .engineering-features li:before {
-    content: "•";
-    color: #fff;
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: rgb(255, 255, 255);
     display: inline-block;
-    width: 20px;
     margin-right: 10px;
+    border-radius: 50%;
+    margin-top: 10px;
 }
 
 /* 相机功能展示部分样式 */
@@ -1489,7 +1885,7 @@ img {
     text-fill-color: transparent;
     text-transform: uppercase;
     text-align: center;
-    font-family: EngraversGothic BT;
+    font-family: 'vertu-en';
     font-size: 32px;
     font-weight: 400;
     line-height: 34px;
@@ -1497,18 +1893,21 @@ img {
     margin-bottom: 60px;
     opacity: 1;
     transform: translateY(0);
+    padding: 0 20px;
 }
 
 .camera-features-container {
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image: url('images/camera.webp');
+    background-image: url('https://vertu-website-oss.vertu.com/2025/04/camera.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .camera-features {
@@ -1580,26 +1979,28 @@ img {
 
 @media (max-width: 768px) {
     .camera-features-container {
-        background-position: center;
-        background-size: cover;
-        height: 100vh;
-    }
-    
-    .camera-features {
-        padding-left: 10%;
-        width: 60%;
-        margin-top: 30px;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 20px;
+        background-image: none !important;
+        position: relative;
+        width: 100% !important;
+        margin: 0 auto 40px;
+        text-align: center;
+        justify-content: center;
+        padding: 0 !important;
+        box-sizing: border-box;
+        height: auto !important;
+        min-height: auto !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
     .encryption-description {
         color: rgb(170, 170, 170);
-        font-family: 'Akzidenz-Grotesk Pro', sans-serif;
+        font-family: 'vertu-ak', sans-serif;
         font-size: 14px;
-        font-weight: 400;
+    font-weight: 400;
         line-height: 18px;
-        letter-spacing: 0px;
+    letter-spacing: 0px;
         text-align: center;
         text-transform: capitalize;
         width: 100%;
@@ -1616,8 +2017,8 @@ img {
         margin-bottom: 25px;
         text-align: center;
         max-width: 100%;
-        display: flex;
-        flex-direction: column;
+    display: flex;
+    flex-direction: column;
         align-items: center;
     }
     
@@ -1630,7 +2031,7 @@ img {
     .processor-item p {
         text-align: center;
         white-space: normal;
-        font-size: 14px;
+    font-size: 14px;
     }
 }
 
@@ -1651,7 +2052,7 @@ img {
     text-fill-color: transparent;
     text-transform: uppercase;
     text-align: center;
-    font-family: EngraversGothic BT;
+    font-family: 'vertu-en';
     font-size: 32px;
     font-weight: 400;
     line-height: 34px;
@@ -1675,7 +2076,7 @@ img {
 }
 
 .satellite-features-container {
-    background-image: url('images/satellite.webp');
+    background-image: url('https://vertu-website-oss.vertu.com/2025/04/satellite.webp');
     background-size: cover;
     background-position: center;
     height: 810px;
@@ -1772,22 +2173,19 @@ img {
     }
     
     .feature-item {
-        padding: 10px 5px;
-        width: 45%;
+        width: 100%;
+        padding: 10px 0;
+        margin-bottom: 15px;
         text-align: left;
-        align-items: flex-start;
-        margin-bottom: 10px;
     }
     
     .feature-item h3 {
         font-size: 20px;
-        line-height: 24px;
-        text-align: left;
+        margin-bottom: 5px;
     }
     
     .feature-item p {
-        font-size: 13px;
-        text-align: left;
+        font-size: 14px;
     }
     
     .feature-divider {
@@ -1797,6 +2195,7 @@ img {
     .satellite-features {
         width: 100%;
     }
+    
 }
 
 /* AI翻译部分样式 */
@@ -1822,24 +2221,11 @@ img {
 .translator-image {
     width: 65%;
     height: 810px;
-    background-image: url('images/translate.webp');
+    background-image: url('https://vertu-website-oss.vertu.com/2025/04/translate.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-}
-
-/* 修复检查图片加载失败的后备方案 */
-.translator-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    z-index: -1;
 }
 
 .translator-content {
@@ -1859,7 +2245,7 @@ img {
     text-fill-color: transparent;
     text-transform: uppercase;
     text-align: left;
-    font-family: EngraversGothic BT;
+    font-family: 'vertu-en';
     font-size: 32px;
     font-weight: 400;
     line-height: 34px;
@@ -1872,7 +2258,7 @@ img {
 .translator-description {
     max-width: 360px;
     color: rgb(255, 255, 255);
-    font-family: 'Akzidenz-Grotesk Pro', sans-serif;
+    font-family: 'vertu-ak', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 21px;
@@ -1905,7 +2291,7 @@ img {
     .translator-container {
         flex-direction: column;
     }
-    
+
     .translator-image, .translator-content {
         flex: 0 0 100%;
         max-width: 100%;
@@ -1915,16 +2301,16 @@ img {
         margin-bottom: 40px;
         text-align: center;
     }
-    
+
     .translator-content {
         padding-left: 0;
         text-align: center;
     }
-    
+
     .translator-content h2 {
         text-align: center;
     }
-    
+
     .translator-description {
         text-align: center;
     }
@@ -1964,7 +2350,7 @@ section p {
 
 /* 图片渐入效果的初始状态 */
 .beauty-img, .processor-img, .phone-detail-img {
-    opacity: 1;
+        opacity: 1;
     transform: scale(1) translateY(0);
 }
 
@@ -1972,7 +2358,7 @@ section p {
 .beauty-description, .encryption-description, .engineering-subtitle, 
 .vps-description p, .security-content p, .power-description, .translator-description,
 .more-than, .non-stop, .stat h3 {
-    opacity: 1;
+        opacity: 1;
     transform: translateY(0);
 }
 
@@ -1984,7 +2370,7 @@ section h2, .vps h2 {
 
 /* 默认显示需要动画显示的元素 */
 .beauty-feature, .processor-item, .engineering-features li, .stat, .power-feature, .feature-list li, .feature-box {
-    opacity: 1;
+        opacity: 1;
 }
 
 /* 移除不必要的过渡效果，由GSAP控制 */
@@ -2040,7 +2426,7 @@ section h2, .vps h2 {
 }
 
 .vps-description p {
-    font-family: 'Akzidenz-Grotesk Pro', sans-serif;
+    font-family: 'vertu-ak', sans-serif;
     font-size: 22px;
     font-weight: 400;
     line-height: 30px;
@@ -2077,7 +2463,7 @@ section h2, .vps h2 {
 }
 
 .more-than, .non-stop {
-    font-family: 'Akzidenz-Grotesk Pro', sans-serif;
+    font-family: 'vertu-ak', sans-serif;
     font-size: 18px;
     font-weight: 300;
     line-height: 24px;
@@ -2123,15 +2509,14 @@ h2,
 .satellite-communication h2, 
 .translator-content h2, 
 .camera-showcase h2,
-.engineering h2,
 .vps h2 {
-    background: linear-gradient(180.00deg, rgb(255, 250, 250), rgba(255, 250, 250, 0));
+    background: linear-gradient(180.00deg, rgb(255, 255, 255), rgba(255, 255, 255, 0));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
     text-transform: uppercase;
-    font-family: EngraversGothic BT, 'Roboto', Arial, sans-serif;
+    font-family: 'vertu-en', 'Roboto', Arial, sans-serif;
 }
 
 @media (max-width: 768px) {
@@ -2142,7 +2527,6 @@ h2,
     .satellite-communication h2, 
     .translator-content h2, 
     .camera-showcase h2,
-    .engineering h2,
     .vps h2 {
         font-size: 24px;
         font-weight: 400;
@@ -2153,15 +2537,82 @@ h2,
         height: auto;
         margin-bottom: 20px;
         white-space: normal;
-        background: linear-gradient(180.00deg, rgb(255, 250, 250), rgba(255, 250, 250, 0));
+        background: linear-gradient(180.00deg, rgb(255, 255, 255), rgba(255, 255, 255, 0));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
         text-fill-color: transparent;
+        padding: 0 20px;
+    }
+    
+    /* 专门为camera-showcase h2设置更高优先级的样式 */
+    section.camera-showcase h2 {
+        padding: 0 20px !important;
+    }
+    
+    /* AI翻译部分布局优化 */
+    section.ai-translator .translator-content {
+        width: 100% !important;
+        padding: 0 20px !important;
+        max-width: 100%;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center !important;
+    }
+    
+    section.ai-translator .translator-description {
+        text-align: left !important;
+    }
+}
+
+@media (max-width: 576px) {
+    /* AI翻译部分布局优化 */
+    section.ai-translator .translator-content {
+        justify-content: center !important;
+    }
+    
+    section.ai-translator .translator-description {
+        text-align: left !important;
+        font-size: 14px;
+        line-height: 19px;
     }
 }
 
 .encryption h2 span.first-line::after {
     content: " ";
     white-space: pre;
+}
+
+.translator-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    z-index: -1;
+}
+
+@media (max-width: 768px) {
+    /* AI翻译部分布局优化 */
+    section.ai-translator .translator-content {
+        width: 100% !important;
+        padding: 0 20px !important;
+        max-width: 100%;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center !important;
+    }
+    
+    section.ai-translator .translator-description {
+        text-align: left !important;
+    }
 }

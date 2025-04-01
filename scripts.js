@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (preOrderBtn) {
         preOrderBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            alert('感谢您的预订！我们将很快与您联系。');
+            alert('Thank you for your pre-order! We will contact you soon.');
         });
     }
 
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (preOrderLink) {
         preOrderLink.addEventListener('click', function(e) {
             e.preventDefault();
-            alert('感谢您的预订！我们将很快与您联系。');
+            alert('Thank you for your pre-order! We will contact you soon.');
         });
     }
 
@@ -250,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 设置容器宽高比
             const containerAspect = this.width / this.height;
-            console.log("容器宽高比:", containerAspect);
             
             this.createPlane();
             this.animate();
@@ -271,18 +270,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 根据实际图片比例约为1:2.5
                 planeHeight = 5.0;
                 planeWidth = 2.0;
-                
-                console.log("移动端平面尺寸:", planeWidth, "x", planeHeight, "(比例:", planeWidth/planeHeight, ")");
             } else if (containerAspect >= 1) {
                 // 桌面端宽屏，以高度为基准
                 planeHeight = 2.0;
                 planeWidth = planeHeight * containerAspect;
-                console.log("桌面端宽屏平面尺寸:", planeWidth, "x", planeHeight, "(比例:", containerAspect, ")");
             } else {
                 // 桌面端窄屏，以宽度为基准
                 planeWidth = 2.0;
                 planeHeight = planeWidth / containerAspect;
-                console.log("桌面端窄屏平面尺寸:", planeWidth, "x", planeHeight, "(比例:", containerAspect, ")");
             }
             
             // 创建平面几何体 - 使用更多细分以获得更好的变形效果
@@ -505,25 +500,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 设置实际纹理宽高比
                 if (texture.image && texture.image.width && texture.image.height) {
                     const actualAspect = texture.image.width / texture.image.height;
-                    console.log("纹理实际宽高比:", actualAspect);
                     
                     // 图片是16:9的，使用固定值1.778
                     this.planeMaterial.uniforms.uTextureAspect.value = 1.778;
-                    
-                    // 打印设置后的uniform值
-                    console.log("设置纹理参数 - 图片宽高比:", this.planeMaterial.uniforms.uTextureAspect.value, "固定16:9比例");
                 }
                 
                 this.planeMaterial.uniforms.uTexture.value = texture;
             }, 
             // 加载进度回调
             (xhr) => {
-                console.log((xhr.loaded / xhr.total * 100) + '% 图片加载中');
+                // Loading progress callback
             },
             // 加载错误回调
             (error) => {
-                console.error('图片加载出错:', error);
-                // 加载失败时显示原始图片
                 const originalImg = this.container.querySelector('img');
                 if (originalImg) {
                     originalImg.style.opacity = '1';
@@ -666,7 +655,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 更新容器宽高比
             const containerAspect = this.width / this.height;
-            console.log("窗口调整：容器宽高比更新为", containerAspect);
             
             // 更新uniform
             if(this.planeMaterial && this.planeMaterial.uniforms) {
@@ -675,10 +663,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 使用与createPlane一致的比例
                     const mobileAspect = 2.0/5.0; // 宽高比为0.4，与createPlane保持一致
                     this.planeMaterial.uniforms.uContainerAspect.value = mobileAspect;
-                    console.log("移动端: 使用固定宽高比", mobileAspect);
                 } else {
                     this.planeMaterial.uniforms.uContainerAspect.value = containerAspect;
-                    console.log("桌面端: 使用实际容器宽高比", containerAspect);
                 }
             }
             
@@ -756,16 +742,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (heroSection && heroBgImage) {
         // 获取背景图像的URL
         const imageUrl = heroBgImage.src;
-        console.log("加载网格效果，图片URL:", imageUrl);
         
         // 检查是否为移动设备
         const isMobile = window.innerWidth <= 768;
         
         if (isMobile) {
             // 移动端不使用网格效果，仅调整图片样式
-            console.log("移动端：不使用网格效果，保留原始图片");
-            
-            // 设置图片样式
             heroBgImage.style.position = 'absolute';
             heroBgImage.style.top = '0';
             heroBgImage.style.left = '50%';
@@ -780,9 +762,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // 桌面端使用网格效果
             setTimeout(() => {
                 try {
-                    console.log("正在创建第一屏网格效果...");
-                    
-                    // 桌面端样式
                     heroBgImage.style.position = 'absolute';
                     heroBgImage.style.top = '50%';
                     heroBgImage.style.left = '50%';
@@ -793,7 +772,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     heroBgImage.style.height = 'auto';
                     heroBgImage.style.objectFit = 'contain';
                     
-                    // 提前准备Three.js效果的配置
                     const canvasContainer = document.createElement('div');
                     canvasContainer.className = 'canvas-container';
                     canvasContainer.style.position = 'absolute';
@@ -814,9 +792,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     // 确保Three.js Canvas在正确的层级
                     const heroCanvas = canvasContainer.querySelector('canvas');
                     if (heroCanvas) {
-                        console.log("Canvas元素已创建，应用样式");
-                        
-                        // 桌面端Canvas样式
                         heroCanvas.style.position = 'absolute';
                         heroCanvas.style.top = '50%';
                         heroCanvas.style.left = '50%';
@@ -830,12 +805,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         // 将原始图片设为完全透明
                         heroBgImage.style.opacity = '0';
                     } else {
-                        console.log("找不到Canvas元素");
                         heroBgImage.style.opacity = '1'; // 恢复原始图片
                     }
                 } catch(error) {
-                    console.error("创建网格效果时出错:", error);
-                    // 如果网格效果失败，显示原始图片
                     heroBgImage.style.opacity = '1';
                 }
             }, 300); // 适度缩短延迟时间
