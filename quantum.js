@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // 检查是否为移动端
     const isMobile = window.innerWidth <= 768;
     
+    // 添加检查是否宽度小于1200px的变量
+    const isNarrowScreen = window.innerWidth < 1200;
+    
     // 添加loading类锁定滚动
     document.body.classList.add('loading');
     
@@ -43,13 +46,122 @@ document.addEventListener('DOMContentLoaded', function() {
     // 这样元素在页面加载和滚动时不会闪烁
     gsap.set(animatedElements, { 
         opacity: 0,
-        y: 20
+        y: 10, // 减小初始位移值，减少视觉跳动
+        force3D: true // 强制3D加速，提高渲染性能
     });
+    
+    // 特别处理encryption部分
+    const encryptionSection = document.querySelector('.encryption');
+    if (encryptionSection) {
+        const encryptionElements = encryptionSection.querySelectorAll('h2, .encryption-description, .processor-item');
+        if (encryptionElements.length > 0) {
+            gsap.set(encryptionElements, { opacity: 0, y: 10, force3D: true });
+        }
+    }
+    
+    // 优化页面加载性能和减少布局偏移
+    function optimizeLayout() {
+        // 预设容器高度，减少重排重绘
+        const sections = document.querySelectorAll('section:not(.hero)');
+        sections.forEach(section => {
+            // 计算内容高度并设置最小高度
+            const content = section.querySelector('h2, .processor-row, .beauty-content');
+            if (content && !section.style.minHeight) {
+                // 为section设置一个合理的最小高度，减少布局偏移
+                const sectionHeight = section.clientHeight;
+                if (sectionHeight > 50) { // 确保有实际内容
+                    section.style.minHeight = `${sectionHeight}px`;
+                }
+            }
+        });
+        
+        // 优化处理器部分
+        const processorSection = document.querySelector('.processor-features');
+        if (processorSection) {
+            const items = processorSection.querySelectorAll('.processor-item');
+            if (items.length > 0) {
+                // 预先设置内容而不是使用透明度为0，这样布局不会跳动
+                items.forEach(item => {
+                    // 设置一个初始的最小高度
+                    const height = item.clientHeight || 80;
+                    if (height > 0 && !item.style.minHeight) {
+                        item.style.minHeight = `${height}px`;
+                    }
+                });
+            }
+        }
+        
+        // 特别优化satellite-features部分
+        const satelliteContainer = document.querySelector('.satellite-features-container');
+        if (satelliteContainer) {
+            const featureBox = satelliteContainer.querySelector('.feature-box');
+            
+            // 保存容器原始高度
+            if (satelliteContainer.clientHeight > 0) {
+                satelliteContainer.style.minHeight = `${satelliteContainer.clientHeight}px`;
+            }
+            
+            // 为内部特性项设置最小高度
+            if (featureBox) {
+                const featureItems = featureBox.querySelectorAll('.feature-item');
+                featureItems.forEach(item => {
+                    if (item.clientHeight > 0) {
+                        item.style.minHeight = `${item.clientHeight}px`;
+                    }
+                });
+            }
+        }
+        
+        // 特别优化VPS部分
+        const vpsSection = document.querySelector('.vps');
+        if (vpsSection) {
+            // 确保VPS部分高度稳定
+            if (vpsSection.clientHeight > 0) {
+                vpsSection.style.minHeight = `${vpsSection.clientHeight}px`;
+            }
+            
+            // 设置所有内容直接可见，不需要动画
+            const vpsContent = vpsSection.querySelector('.vps-content');
+            if (vpsContent) {
+                gsap.set(vpsContent, { opacity: 1, y: 0, clearProps: "all" });
+                
+                // 为stats部分设置样式
+                const stats = vpsContent.querySelectorAll('.stat');
+                stats.forEach(stat => {
+                    // 设置可见度
+                    gsap.set(stat, { opacity: 1, y: 0, clearProps: "all" });
+                    
+                    // 设置内部元素为可见
+                    const statElements = stat.querySelectorAll('h3, p');
+                    gsap.set(statElements, { opacity: 1, y: 0, clearProps: "all" });
+                });
+                
+                // 为描述文本设置样式
+                const descriptionP = vpsContent.querySelector('.vps-description p');
+                if (descriptionP) {
+                    gsap.set(descriptionP, { opacity: 1, y: 0, clearProps: "all" });
+                }
+            }
+            
+            // 确保标题可见
+            const vpsTitle = vpsSection.querySelector('h2');
+            if (vpsTitle) {
+                gsap.set(vpsTitle, { opacity: 1, y: 0, clearProps: "all" });
+            }
+        }
+    }
     
     // 等待页面完全加载后再开始动画
     window.addEventListener('load', function() {
         // 标记GSAP已加载，并已设置好初始状态
         document.body.classList.add('js-loaded');
+        
+        // 优化布局以减少偏移和跳动
+        optimizeLayout();
+        
+        // 更新窗口宽度检测
+        const isMobile = window.innerWidth <= 768;
+        const isNarrowScreen = window.innerWidth < 1200;
         
         // 延迟后移除loading screen - 移动端更快
         const loadingDelay = isMobile ? 1500 : 3000; // 移动端延迟减少到1.5秒
@@ -70,9 +182,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.visibility = 'visible';
                 document.body.style.opacity = '1';
                 
-                // 只在移动端显示背景图片
-                if (isMobile) {
+                // 显示背景图片条件： 移动端或窄屏
+                if (isMobile || isNarrowScreen) {
+                    heroBackground.style.display = 'block'; // 确保背景图片可见
                     heroBackground.classList.add('show');
+                    
+                    // 当显示背景图片时，调整文字颜色为白色
+                    document.querySelector('.vertu-title').style.color = '#fff';
+                    document.querySelector('.hero .subtitle').style.color = '#fff';
+                } else {
+                    // 在使用网格效果时，文字颜色设为黑色
+                    document.querySelector('.vertu-title').style.color = '#000';
+                    document.querySelector('.hero .subtitle').style.color = '#000';
                 }
                 
                 // 创建主时间线
@@ -106,8 +227,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     );
 
-                // 只在PC端创建canvas效果
-                if (!isMobile) {
+                // 只在PC端且屏幕宽度>=1200px时创建canvas效果
+                if (!isMobile && !isNarrowScreen) {
                     const canvasContainer = document.querySelector('.canvas-container');
                     if (canvasContainer) {
                         // 创建网格效果
@@ -128,8 +249,28 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 为元素应用动画
     animatedElements.forEach((element, index) => {
-        // 如果元素已经有动画，跳过
+        // 如果元素已经有动画或者是VPS部分的元素，跳过
         if (element.dataset.hasAnimation === 'true') return;
+        
+        // 检查元素是否属于VPS部分
+        let isVpsElement = false;
+        let parent = element;
+        while (parent && parent !== document.body) {
+            if (parent.classList && parent.classList.contains('vps')) {
+                isVpsElement = true;
+                break;
+            }
+            parent = parent.parentElement;
+        }
+        
+        // 如果是VPS部分元素，直接跳过
+        if (isVpsElement) {
+            // 设置为已有动画，防止后续重复处理
+            element.dataset.hasAnimation = 'true';
+            // 确保元素可见
+            gsap.set(element, { opacity: 1, y: 0, clearProps: "all" });
+            return;
+        }
         
         // 标记元素已经有动画
         element.dataset.hasAnimation = 'true';
@@ -137,36 +278,40 @@ document.addEventListener('DOMContentLoaded', function() {
         // 确定动画参数
         let config = {
             opacity: 0,
-            y: 20,
-            duration: 1,
-            ease: 'power3.out'
+            y: 10, // 减少位移距离
+            duration: 0.6, // 缩短动画时间
+            ease: 'power2.out' // 使用更平滑的缓动
         };
         
         // 根据元素类型调整动画
         if (element.tagName === 'H2' || element.tagName === 'H3') {
-            config.y = 30;
+            config.y = 15; // 减少标题的初始位移
         } else if (element.tagName === 'IMG') {
-            config.y = 15;
+            config.y = 10; // 减少图片的初始位移
         } else if (element.classList.contains('feature-item') || 
                   element.classList.contains('beauty-feature') || 
                   element.parentElement.classList.contains('engineering-features')) {
-            config.y = 25;
-            config.delay = index % 4 * 0.15; // 为同组元素添加交错效果
+            config.y = 10;
+            config.delay = index % 4 * 0.05; // 减少交错时间，避免过长等待
         }
         
         // 应用滚动触发动画 - 使用GSAP's to() 而不是 fromTo()
-        // 这样可以确保元素从当前状态(opacity: 0)平滑过渡到目标状态
         ScrollTrigger.create({
             trigger: element,
-            start: isMobile ? 'top 95%' : 'top 85%',  // 移动端提前触发
+            start: isMobile ? 'top 95%' : 'top 90%',  // 提前触发以减少突然跳动
             once: true,
+            markers: false, // 关闭标记
             onEnter: () => {
+                // 使用一致的动画参数
                 gsap.to(element, {
                     opacity: 1,
                     y: 0,
                     duration: config.duration,
                     delay: config.delay || 0,
-                    ease: config.ease
+                    ease: config.ease,
+                    clearProps: '', // 不清除属性，避免跳动
+                    overwrite: 'auto', // 自动处理重叠动画
+                    force3D: true // 强制3D加速，提高渲染性能
                 });
             }
         });
@@ -580,16 +725,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         setupEventListeners() {
-            // 检测是否为移动设备
-            const isMobile = window.innerWidth <= 768;
+            // 鼠标移动监听
+            this.container.addEventListener('mousemove', this.onMouseMove.bind(this));
             
-            if (!isMobile) {
-                // 桌面端保持鼠标移动事件
-                window.addEventListener('mousemove', this.onMouseMove.bind(this));
-            }
-            
-            // 共享事件
+            // 添加窗口大小变化监听
             window.addEventListener('resize', this.onResize.bind(this));
+            
+            // 添加滚动监听
             window.addEventListener('scroll', this.onScroll.bind(this));
         }
         
@@ -702,8 +844,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         onResize() {
-            this.width = this.container.clientWidth || window.innerWidth;
-            this.height = this.container.clientHeight || window.innerHeight;
+            // 获取新的窗口尺寸
+            const width = this.container.clientWidth || window.innerWidth;
+            const height = this.container.clientHeight || window.innerHeight;
+            
+            // 检查窗口宽度是否小于1200px
+            if (width < 1200) {
+                // 如果宽度<1200px，隐藏canvas容器
+                this.container.classList.remove('show');
+                
+                // 确保背景图片可见
+                const heroBackground = document.querySelector('.hero-background');
+                if (heroBackground) {
+                    heroBackground.style.display = 'block';
+                    heroBackground.classList.add('show');
+                    
+                    // 调整文字颜色
+                    const title = document.querySelector('.vertu-title');
+                    const subtitle = document.querySelector('.hero .subtitle');
+                    if (title) title.style.color = '#fff';
+                    if (subtitle) subtitle.style.color = '#fff';
+                }
+                
+                return; // 不继续更新渲染
+            } else {
+                // 如果宽度>=1200px，确保容器可见
+                this.container.classList.add('show');
+                
+                // 调整文字颜色
+                const title = document.querySelector('.vertu-title');
+                const subtitle = document.querySelector('.hero .subtitle');
+                if (title) title.style.color = '#000';
+                if (subtitle) subtitle.style.color = '#000';
+            }
+            
+            // 更新宽高
+            this.width = width;
+            this.height = height;
             
             // 检测是否为移动设备
             const isMobile = window.innerWidth <= 768;

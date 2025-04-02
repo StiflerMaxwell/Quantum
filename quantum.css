@@ -164,7 +164,7 @@ img {
     z-index: 1;
     opacity: 0;
     transition: opacity 0.8s ease;
-    display: none; /* 默认隐藏背景图片 */
+    display: block; /* 修改为默认显示 */
 }
 
 .hero-background.show {
@@ -2551,6 +2551,7 @@ section h2, .vps h2 {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    position: relative;
 }
 
 .vps-description {
@@ -2558,6 +2559,7 @@ section h2, .vps h2 {
     margin: 0;
     padding-right: 20px;
     text-align: left;
+    position: relative;
 }
 
 .vps-description p {
@@ -2569,6 +2571,10 @@ section h2, .vps h2 {
     color: rgb(255, 255, 255);
     text-align: left;
     padding: 0;
+    position: relative;
+    opacity: 1;
+    transform: none !important;
+    transition: none !important;
 }
 
 .vps-stats {
@@ -2578,12 +2584,14 @@ section h2, .vps h2 {
     justify-content: center;
     gap: 40px;
     padding-left: 10px;
+    position: relative;
 }
 
 .stat {
     text-align: left;
     width: auto;
     padding: 0;
+    position: relative;
 }
 
 .stat h3 {
@@ -2595,6 +2603,10 @@ section h2, .vps h2 {
     line-height: 1.2;
     text-transform: none;
     text-align: left;
+    position: relative;
+    opacity: 1;
+    transform: none !important;
+    transition: none !important;
 }
 
 .more-than, .non-stop {
@@ -2606,6 +2618,10 @@ section h2, .vps h2 {
     color: rgb(134, 134, 139);
     margin: 5px 0;
     text-align: left;
+    position: relative;
+    opacity: 1;
+    transform: none !important;
+    transition: none !important;
 }
 
 @media (max-width: 992px) {
@@ -2818,4 +2834,81 @@ body.js-loaded section:not(.hero) p:not(.subtitle),
 body.js-loaded section:not(.hero) img {
     visibility: visible;
     /* 动画完全由GSAP控制 */
+}
+
+/* 在屏幕宽度大于等于1200px时隐藏背景图片 */
+@media (min-width: 1200px) {
+    .hero-background {
+        display: none;
+    }
+}
+
+/* 在屏幕宽度小于1200px时显示背景图片 */
+@media (max-width: 1199px) {
+    .hero-background {
+        display: block;
+    }
+    
+    .hero-background.show {
+        opacity: 1;
+    }
+    
+    .canvas-container {
+        display: none;
+    }
+}
+
+/* 卫星通信部分布局优化 - 防止动画跳动 */
+.satellite-features-container {
+    position: relative;
+    overflow: hidden;
+    transition: none !important; /* 禁用容器过渡，避免跳动 */
+}
+
+.satellite-features {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feature-box {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    will-change: transform, opacity; /* 优化渲染性能 */
+    transform: translateZ(0); /* 强制GPU加速 */
+    transform: translate3d(0,0,0) !important; /* 防止Y轴跳动 */
+}
+
+.feature-item {
+    will-change: opacity;
+    transform: translateZ(0);
+}
+
+.feature-item h3,
+.feature-item p {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.satellite-features .feature-item {
+    will-change: opacity, transform !important;
+    transform: translateY(-10px) translateZ(0) !important; /* 向上移动10px */
+    transition: opacity 0.5s ease !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* 确保内容不会跳动 */
+.satellite-features .feature-item h3,
+.satellite-features .feature-item p {
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+    perspective: 1000px !important;
+    height: auto !important;
 }
