@@ -1,85 +1,177 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 首屏元素淡入效果
-    setTimeout(function() {
-        const heroTitle = document.querySelector('.vertu-title');
-        if (heroTitle) {
-            heroTitle.classList.add('fade-in');
-        }
-    }, 500);
-
-    setTimeout(function() {
-        const heroSubtitle = document.querySelector('.hero .subtitle');
-        if (heroSubtitle) {
-            heroSubtitle.classList.add('fade-in');
-        }
-    }, 1000);
-
-    setTimeout(function() {
-        const preOrderBtn = document.querySelector('.pre-order-btn');
-        if (preOrderBtn) {
-            preOrderBtn.classList.add('fade-in');
-        }
-    }, 1500);
-
-    // 添加滚动动画
-    const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.feature-item, .processor-item, .engineering-features li, .stat, .power-feature, .beauty-feature');
+    // 注册GSAP插件
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+    
+    // 检查是否为移动端
+    const isMobile = window.innerWidth <= 768;
+    
+    // 添加loading类锁定滚动
+    document.body.classList.add('loading');
+    
+    // 确保body初始状态正确
+    document.body.style.visibility = 'hidden';
+    document.body.style.opacity = '0';
+    
+    // 显示loading文字
+    const loadingText = document.querySelector('.loading-text');
+    setTimeout(() => {
+        loadingText.classList.add('show');
+    }, 100);
+    
+    // ===== 动画元素选择器 =====
+    // 需要动画的元素选择器
+    const animatedSelectors = [
+        '.feature-item', 
+        '.processor-item', 
+        '.engineering-features li', 
+        '.power-feature', 
+        '.beauty-feature',
+        '.stat h3',
+        '.stat p',
+        'section:not(.hero) h2',
+        'section:not(.hero) p:not(.subtitle)',
+        'section:not(.hero) img'
+    ];
+    
+    // 合并为一个选择器字符串
+    const combinedSelector = animatedSelectors.join(', ');
+    
+    // 获取所有需要动画的元素
+    const animatedElements = document.querySelectorAll(combinedSelector);
+    
+    // 预先设置所有元素的初始状态为不可见
+    // 这样元素在页面加载和滚动时不会闪烁
+    gsap.set(animatedElements, { 
+        opacity: 0,
+        y: 20
+    });
+    
+    // 等待页面完全加载后再开始动画
+    window.addEventListener('load', function() {
+        // 标记GSAP已加载，并已设置好初始状态
+        document.body.classList.add('js-loaded');
         
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
+        // 延迟后移除loading screen - 移动端更快
+        const loadingDelay = isMobile ? 1500 : 3000; // 移动端延迟减少到1.5秒
+        
+        setTimeout(() => {
+            const loadingScreen = document.querySelector('.loading-screen');
+            const heroBackground = document.querySelector('.hero-background');
+            loadingScreen.classList.add('fade-out');
             
-            if (elementPosition < windowHeight * 0.85) {
-                element.style.animation = 'fadeIn 1s ease-out forwards';
-            }
-        });
-    };
-
-    // 添加第二屏特性部分的淡入动画
-    const animateBeautyFeatures = function() {
-        const beautyFeatures = document.querySelectorAll('.beauty-feature');
-        beautyFeatures.forEach((feature, index) => {
+            // 等待loading screen淡出后再显示页面内容
+            const fadeOutDelay = isMobile ? 500 : 800; // 移动端淡出时间减少到0.5秒
+            
             setTimeout(() => {
-                feature.classList.add('fade-in');
-            }, 300 * (index + 1));
-        });
-    };
+                // 移除loading类，恢复滚动
+                document.body.classList.remove('loading');
+                
+                // 显示页面内容
+                document.body.style.visibility = 'visible';
+                document.body.style.opacity = '1';
+                
+                // 只在移动端显示背景图片
+                if (isMobile) {
+                    heroBackground.classList.add('show');
+                }
+                
+                // 创建主时间线
+                const mainTl = gsap.timeline();
+                
+                // 设置初始状态
+                gsap.set('.vertu-title', { opacity: 0, y: 30 });
+                gsap.set('.hero .subtitle', { opacity: 0, y: 25 });
+                
+                // 首屏元素淡入效果 - 移动端更快
+                const titleDelay = isMobile ? 0.2 : 0.5; // 移动端延迟减少
+                const titleDuration = isMobile ? 0.8 : 1.2; // 移动端动画时间减少
+                
+                mainTl
+                    .to('.vertu-title', 
+                        { 
+                            opacity: 1, 
+                            y: 0, 
+                            duration: titleDuration, 
+                            ease: 'power3.out',
+                            delay: titleDelay
+                        }
+                    )
+                    .to('.hero .subtitle', 
+                        { 
+                            opacity: 1, 
+                            y: 0, 
+                            duration: titleDuration, 
+                            ease: 'power3.out',
+                            delay: isMobile ? 0.2 : 0.3
+                        }
+                    );
 
-    // 监听第二屏滚动
-    window.addEventListener('scroll', function() {
-        const beautySection = document.querySelector('.power-beauty');
-        if (beautySection) {
-            const beautyPosition = beautySection.getBoundingClientRect().top;
-            if (beautyPosition < window.innerHeight * 0.2 && beautyPosition > -beautySection.offsetHeight * 0.8) {
-                animateBeautyFeatures();
-            }
-        }
+                // 只在PC端创建canvas效果
+                if (!isMobile) {
+                    const canvasContainer = document.querySelector('.canvas-container');
+                    if (canvasContainer) {
+                        // 创建网格效果
+                        new GridEffect(canvasContainer, 'https://vertu-website-oss.vertu.com/2025/04/hero.webp');
+                        
+                        // 延迟显示canvas效果
+                        setTimeout(() => {
+                            canvasContainer.classList.add('show');
+                        }, 800);
+                    }
+                }
+                
+            }, fadeOutDelay); // 等待loading screen淡出完成
+        }, loadingDelay);
     });
 
-    // 初始化时执行一次
-    animateOnScroll();
+    // ===== 滚动触发动画 =====
     
-    // 监听滚动事件
-    window.addEventListener('scroll', animateOnScroll);
-
-    // Pre-Order 按钮点击事件
-    const preOrderBtn = document.querySelector('.pre-order-btn');
-    if (preOrderBtn) {
-        preOrderBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Thank you for your pre-order! We will contact you soon.');
+    // 为元素应用动画
+    animatedElements.forEach((element, index) => {
+        // 如果元素已经有动画，跳过
+        if (element.dataset.hasAnimation === 'true') return;
+        
+        // 标记元素已经有动画
+        element.dataset.hasAnimation = 'true';
+        
+        // 确定动画参数
+        let config = {
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            ease: 'power3.out'
+        };
+        
+        // 根据元素类型调整动画
+        if (element.tagName === 'H2' || element.tagName === 'H3') {
+            config.y = 30;
+        } else if (element.tagName === 'IMG') {
+            config.y = 15;
+        } else if (element.classList.contains('feature-item') || 
+                  element.classList.contains('beauty-feature') || 
+                  element.parentElement.classList.contains('engineering-features')) {
+            config.y = 25;
+            config.delay = index % 4 * 0.15; // 为同组元素添加交错效果
+        }
+        
+        // 应用滚动触发动画 - 使用GSAP's to() 而不是 fromTo()
+        // 这样可以确保元素从当前状态(opacity: 0)平滑过渡到目标状态
+        ScrollTrigger.create({
+            trigger: element,
+            start: isMobile ? 'top 95%' : 'top 85%',  // 移动端提前触发
+            once: true,
+            onEnter: () => {
+                gsap.to(element, {
+                    opacity: 1,
+                    y: 0,
+                    duration: config.duration,
+                    delay: config.delay || 0,
+                    ease: config.ease
+                });
+            }
         });
-    }
-
-    // Pre-Order 链接点击事件
-    const preOrderLink = document.querySelector('.pre-order-link');
-    if (preOrderLink) {
-        preOrderLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Thank you for your pre-order! We will contact you soon.');
-        });
-    }
-
+    });
+    
     // 平滑滚动效果
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -89,9 +181,13 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                gsap.to(window, {
+                    duration: 1,
+                    scrollTo: {
+                        y: targetElement,
+                        offsetY: 50
+                    },
+                    ease: 'power3.inOut'
                 });
             }
         });
@@ -104,7 +200,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function handleImageLoad() {
         loadedImagesCount++;
         if (loadedImagesCount === images.length) {
-            // 所有图片加载完成
             document.body.classList.add('images-loaded');
         }
     }
@@ -114,47 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
             handleImageLoad();
         } else {
             img.addEventListener('load', handleImageLoad);
-            img.addEventListener('error', handleImageLoad); // 处理加载失败的情况
-        }
-    });
-
-    // 添加视差滚动效果
-    window.addEventListener('scroll', function() {
-        const scrollPosition = window.pageYOffset;
-        
-        // Hero区域的视差效果
-        const heroSection = document.querySelector('.hero');
-        if (heroSection) {
-            const heroImg = heroSection.querySelector('.phone-hero-img');
-            if (heroImg) {
-                heroImg.style.transform = `translateY(${scrollPosition * 0.2}px)`;
-            }
-        }
-
-        // Power of Beauty区域的视差效果
-        const powerBeautySection = document.querySelector('.power-beauty');
-        if (powerBeautySection) {
-            const phoneDisplayImg = powerBeautySection.querySelector('.phone-display-img');
-            if (phoneDisplayImg) {
-                const sectionTop = powerBeautySection.offsetTop;
-                const sectionScroll = scrollPosition - sectionTop;
-                if (sectionScroll > -window.innerHeight && sectionScroll < powerBeautySection.offsetHeight) {
-                    phoneDisplayImg.style.transform = `translateY(${sectionScroll * 0.1}px)`;
-                }
-            }
-        }
-
-        // Quantum Encryption区域的视差效果
-        const encryptionSection = document.querySelector('.encryption');
-        if (encryptionSection) {
-            const processorImg = encryptionSection.querySelector('.processor-img');
-            if (processorImg) {
-                const sectionTop = encryptionSection.offsetTop;
-                const sectionScroll = scrollPosition - sectionTop;
-                if (sectionScroll > -window.innerHeight && sectionScroll < encryptionSection.offsetHeight) {
-                    processorImg.style.transform = `translateY(${sectionScroll * 0.05}px)`;
-                }
-            }
+            img.addEventListener('error', handleImageLoad);
         }
     });
 
@@ -734,85 +789,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 this._isScrolling = false;
             }, 200);
         }
-    }
-
-    // 为第一屏添加网格变形效果
-    const heroSection = document.querySelector('.hero');
-    const heroBgImage = document.querySelector('.hero-bg-img');
-    if (heroSection && heroBgImage) {
-        // 获取背景图像的URL
-        const imageUrl = heroBgImage.src;
-        
-        // 检查是否为移动设备
-        const isMobile = window.innerWidth <= 768;
-        
-        if (isMobile) {
-            // 移动端不使用网格效果，仅调整图片样式
-            heroBgImage.style.position = 'absolute';
-            heroBgImage.style.top = '0';
-            heroBgImage.style.left = '50%';
-            heroBgImage.style.transform = 'translateX(-50%)';
-            heroBgImage.style.width = 'auto';
-            heroBgImage.style.height = '100%';
-            heroBgImage.style.objectFit = 'contain';
-            heroBgImage.style.maxWidth = 'none';
-            heroBgImage.style.minHeight = '100%';
-            heroBgImage.style.opacity = '1';
-        } else {
-            // 桌面端使用网格效果
-            setTimeout(() => {
-                try {
-                    heroBgImage.style.position = 'absolute';
-                    heroBgImage.style.top = '50%';
-                    heroBgImage.style.left = '50%';
-                    heroBgImage.style.transform = 'translate(-50%, -50%)';
-                    heroBgImage.style.maxWidth = '100%';
-                    heroBgImage.style.maxHeight = '100%';
-                    heroBgImage.style.width = 'auto';
-                    heroBgImage.style.height = 'auto';
-                    heroBgImage.style.objectFit = 'contain';
-                    
-                    const canvasContainer = document.createElement('div');
-                    canvasContainer.className = 'canvas-container';
-                    canvasContainer.style.position = 'absolute';
-                    canvasContainer.style.top = '0';
-                    canvasContainer.style.left = '0';
-                    canvasContainer.style.width = '100%';
-                    canvasContainer.style.height = '100%';
-                    canvasContainer.style.display = 'flex';
-                    canvasContainer.style.justifyContent = 'center';
-                    canvasContainer.style.alignItems = 'center';
-                    canvasContainer.style.zIndex = '2';
-                    
-                    heroSection.appendChild(canvasContainer);
-                    
-                    // 创建网格效果
-                    const heroGridEffect = new GridEffect(canvasContainer, imageUrl);
-                    
-                    // 确保Three.js Canvas在正确的层级
-                    const heroCanvas = canvasContainer.querySelector('canvas');
-                    if (heroCanvas) {
-                        heroCanvas.style.position = 'absolute';
-                        heroCanvas.style.top = '50%';
-                        heroCanvas.style.left = '50%';
-                        heroCanvas.style.transform = 'translate(-50%, -50%)';
-                        heroCanvas.style.maxWidth = '100%';
-                        heroCanvas.style.maxHeight = '100%';
-                        heroCanvas.style.width = 'auto';
-                        heroCanvas.style.height = 'auto';
-                        heroCanvas.style.objectFit = 'contain';
-                        
-                        // 将原始图片设为完全透明
-                        heroBgImage.style.opacity = '0';
-                    } else {
-                        heroBgImage.style.opacity = '1'; // 恢复原始图片
-                    }
-                } catch(error) {
-                    heroBgImage.style.opacity = '1';
-                }
-            }, 300); // 适度缩短延迟时间
-        }
-    } else {
-        console.error("找不到hero部分或背景图片元素");
     }
 }); 

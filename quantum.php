@@ -1,19 +1,14 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VERTU QUANTUM</title>
-    <link rel="stylesheet" href="quantum.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="quantum.js" defer></script>
-</head>
-<body>
-    <!-- Loading Screen -->
-    <div class="loading-screen">
+<?php /* Template Name: quantum */ ?>
+ 
+<?php 
+ 
+get_header();
+
+?>
+
+<div  id="quantum"  class="demo site-content-fullwidth"> 
+     <!-- Loading Screen -->
+     <div class="loading-screen">
         <div class="loading-text">
             <span>V</span>
             <span>E</span>
@@ -238,8 +233,13 @@
                 </div>
             </div>
         </section>
-             
-    </main>
-    <script src="animations_quantum.js"></script>
-</body>
-</html> 
+               
+         
+        <div class="elementor-template-container" style="margin-top: 50px;">
+            <?php echo do_shortcode('[elementor-template id="91850"]'); ?>
+        </div>
+    </main> 
+    
+</div><!-- .content-area -->
+<?php 
+get_footer(); ?>
