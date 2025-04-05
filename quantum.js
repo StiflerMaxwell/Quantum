@@ -163,8 +163,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const isMobile = window.innerWidth <= 768;
         const isNarrowScreen = window.innerWidth < 1200;
         
-        // 延迟后移除loading screen - 移动端更快
-        const loadingDelay = isMobile ? 1500 : 3000; // 移动端延迟减少到1.5秒
+        // 延迟后移除loading screen - 减少等待时间
+        const loadingDelay = isMobile ? 800 : 2000; // PC端2秒，移动端800毫秒
         
         setTimeout(() => {
             const loadingScreen = document.querySelector('.loading-screen');
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loadingScreen.classList.add('fade-out');
             
             // 等待loading screen淡出后再显示页面内容
-            const fadeOutDelay = isMobile ? 500 : 800; // 移动端淡出时间减少到0.5秒
+            const fadeOutDelay = isMobile ? 200 : 400; // 减少淡出时间
             
             setTimeout(() => {
                 // 移除loading类，恢复滚动
