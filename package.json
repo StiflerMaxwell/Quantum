@@ -1,0 +1,13 @@
+{
+  "name": "quantum-website",
+  "version": "1.0.0",
+  "description": "Vertu Quantum Website",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server --port=3005 --no-browser",
+    "dev": "live-server --port=3005 --no-browser"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
