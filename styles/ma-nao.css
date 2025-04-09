@@ -1,6 +1,9 @@
 .quantum-body {
   background-color: rgb(15, 15, 15);
   padding-bottom: 20px;
+
+  --font-family-en: 'vertu-en', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-ak: 'vertu-ak', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* 顶部横幅区域 - 全宽 */
@@ -32,7 +35,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-family: 'EngraversGothicW01-Bold';
+  font-family: var(--font-family-en);
   font-size: 48px;
   font-weight: 400;
   line-height: 1.8;
@@ -43,7 +46,7 @@
 
 .logo-title p {
   color: rgb(0, 0, 0);
-  font-family: 'Akzidenz-Grotesk Pro';
+  font-family: var(--font-family-ak);
   font-size: 24px;
   font-weight: 400;
   line-height: 1;
@@ -60,7 +63,7 @@
   cursor: pointer;
 
   color: rgb(17, 16, 16);
-  font-family: EngraversGothic BT;
+  font-family: var(--font-family-en);
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0px;
@@ -69,8 +72,9 @@
 }
 
 .explore-btn:hover {
-  background-color: transparent;
-  color: #fff;
+  /* TODO: 按钮hover 样式 */
+  background-color: rgb(255, 255, 255);
+  color: rgb(17, 16, 16);
 }
 
 /* 量子视界区域 */
@@ -87,7 +91,7 @@
 }
 .quantum-agape .content-wrapper h2 {
   color: rgb(255, 255, 255);
-  font-family: EngraversGothic BT;
+  font-family: var(--font-family-en);
   font-size: 32px;
   font-weight: 400;
   line-height: 35px;
@@ -98,26 +102,38 @@
 }
 
 .quantum-agape .content-wrapper p {
-  max-width: 1000px;
+  max-width: 868px;
   margin: 0 auto;
   color: rgb(134, 134, 139);
-  font-family: Akzidenz-Grotesk Pro;
-  font-size: 21px;
+  font-family: var(--font-family-ak);
+  font-size: 16px;
   font-weight: normal;
-  line-height: 35px;
+  line-height: 21px;
   letter-spacing: 0px;
   text-align: center;
 }
 
 /* 天体黎明区域 */
 .celestial-dawn {
+  width: 100%;
+  position: relative;
+}
+.celestial-dawn .celestial-dawn-bg {
+  width: 100%;
   height: 810px;
   background-image: url('../images/celestial-dawn.png');
   background-size: cover;
   background-position: center;
+}
+.celestial-dawn-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: center;
 }
 .celestial-dawn .content-wrapper {
   height: 100%;
@@ -137,7 +153,7 @@
 
 .celestial-dawn .content-wrapper .feature-text h2 {
   color: rgb(255, 255, 255);
-  font-family: EngraversGothic BT;
+  font-family: var(--font-family-en);
   font-size: 32px;
   line-height: 35px;
   font-weight: 400;
@@ -148,10 +164,10 @@
 .celestial-dawn .content-wrapper .feature-text p {
   margin-top: 30px;
   color: rgb(255, 255, 255);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 24px;
   font-weight: 400;
-  line-height: 1.8;
+  line-height: 31px;
   letter-spacing: 0px;
   text-align: left;
 }
@@ -200,6 +216,52 @@
 .manao-image-section {
   width: 100%;
   height: 810px;
+}
+.manao-photo-section {
+  width: 100%;
+}
+.manao-photo-section .manao-content {
+  position: relative;
+  height: 810px;
+}
+.photo-text {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+
+  white-space: nowrap;
+  color: rgb(255, 255, 255);
+  font-family: var(--font-family-ak);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+.photo-text-1 {
+  width: 300px;
+  text-align: right;
+  transform: translate(-637px, 86px);
+}
+.photo-text-2 {
+  width: 300px;
+  text-align: right;
+  transform: translate(-644px, 231px);
+}
+.photo-text-3 {
+  width: 300px;
+  text-align: right;
+  transform: translate(-633px, 371px);
+}
+.photo-text-4 {
+  width: 300px;
+  text-align: left;
+  transform: translate(435px, 86px);
+}
+.photo-text-5 {
+  width: 300px;
+  text-align: left;
+  transform: translate(443px, 301px);
 }
 .manao-content {
   width: 100%;
@@ -255,7 +317,7 @@
 .pattern-card h3 {
   line-height: 23px;
   color: rgb(231, 202, 172);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 18px;
   font-weight: 400;
   line-height: 23px;
@@ -268,7 +330,7 @@
   margin-top: 8px;
   line-height: 18px;
   color: rgb(255, 255, 255);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
@@ -318,7 +380,7 @@
 
 .engineering-content h2 {
   color: rgb(255, 255, 255);
-  font-family: EngraversGothic BT;
+  font-family: var(--font-family-en);
   font-size: 32px;
   font-weight: 400;
   line-height: 35px;
@@ -330,7 +392,7 @@
 .engineering-content p {
   margin-top: 6px;
   color: rgb(231, 202, 172);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 16px;
   font-weight: 400;
   line-height: 21px;
@@ -346,7 +408,7 @@
 .engineering-content li {
   margin-bottom: 6px;
   color: rgb(255, 255, 255);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
@@ -363,7 +425,7 @@
   content: '';
   position: absolute;
   left: 0;
-  top: 50%;
+  top: 9px;
   transform: translateY(-50%);
   width: 6px;
   height: 6px;
@@ -390,11 +452,38 @@
   position: relative;
   overflow: hidden;
 }
-
+.video-placeholder .video-showcase-video-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.video-placeholder .video-showcase-video-container.active {
+  opacity: 1;
+  visibility: visible;
+}
+.video-placeholder .video-showcase-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
 .play-video-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
   width: 72px;
   height: 60px;
   cursor: pointer;
+}
+.video-showcase .play-video-icon.hidden {
+  display: none;
 }
 
 /* VPS区域 */
@@ -410,7 +499,7 @@
 
 .vps-section h2 {
   color: rgb(255, 255, 255);
-  font-family: EngraversGothic BT;
+  font-family: var(--font-family-en);
   font-size: 32px;
   font-weight: 400;
   line-height: 35px;
@@ -433,7 +522,7 @@
 
 .vps-feature-text p {
   color: rgb(255, 255, 255);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 24px;
   font-weight: 400;
   line-height: 30px;
@@ -455,7 +544,7 @@
 
 .stat h3 {
   color: rgb(231, 202, 172);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 18px;
   font-weight: 400;
   line-height: 23px;
@@ -467,7 +556,7 @@
 .stat-number,
 .stat-label {
   color: rgb(255, 255, 255);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 36px;
   font-weight: 500;
   line-height: 44px;
@@ -479,7 +568,7 @@
 
 .stat p {
   color: rgb(134, 134, 139);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 21px;
   font-weight: 400;
   line-height: 27px;
@@ -577,7 +666,7 @@
 
 .beyond-earth h2 {
   color: rgb(255, 255, 255);
-  font-family: EngraversGothic BT;
+  font-family: var(--font-family-en);
   font-size: 32px;
   font-weight: 400;
   line-height: 35px;
@@ -589,7 +678,7 @@
 
 .beyond-earth p {
   color: rgb(134, 134, 139);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 16px;
   font-weight: 400;
   line-height: 21px;
@@ -616,6 +705,18 @@
   justify-content: space-around;
   flex-wrap: wrap;
 }
+.feature-tips {
+  margin-top: 50px;
+  color: rgb(134, 134, 139);
+  font-family: var(--font-family-ak);
+  font-size: 14px;
+  font-weight: 400;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+}
 
 .feature-item {
   flex: 1;
@@ -625,7 +726,7 @@
 
 .feature-item h3 {
   color: rgb(255, 255, 255);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 24px;
   font-weight: 500;
   letter-spacing: 0px;
@@ -637,7 +738,7 @@
 
 .feature-item p {
   color: rgb(134, 134, 139);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 14px;
   font-weight: 400;
   line-height: 18px;
@@ -691,10 +792,12 @@ section {
   justify-content: center;
   align-items: flex-start;
 }
-
+.features-translator .feature-content-title {
+  display: none;
+}
 .features-translator .feature-text h2 {
   color: rgb(255, 255, 255);
-  font-family: EngraversGothic BT;
+  font-family: var(--font-family-en);
   font-size: 32px;
   font-weight: 400;
   line-height: 35px;
@@ -706,7 +809,7 @@ section {
 
 .features-translator .feature-text p {
   color: rgb(134, 134, 139);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 16px;
   font-weight: 400;
   line-height: 21px;
@@ -729,7 +832,7 @@ section {
 
 .feature-block > h2 {
   color: rgb(255, 255, 255);
-  font-family: EngraversGothic BT;
+  font-family: var(--font-family-en);
   font-size: 32px;
   font-weight: 400;
   text-align: center;
@@ -774,7 +877,7 @@ section {
 }
 .display-feature-text h3 {
   color: rgb(231, 202, 172);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 20px;
   font-weight: 400;
   line-height: 26px;
@@ -784,7 +887,7 @@ section {
 .display-feature-text h4 {
   margin-top: 2px;
   color: rgb(255, 255, 255);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 24px;
   font-weight: 400;
   line-height: 31px;
@@ -794,7 +897,7 @@ section {
 .display-feature-text p {
   margin-top: 14px;
   color: rgb(134, 134, 139);
-  font-family: Akzidenz-Grotesk Pro;
+  font-family: var(--font-family-ak);
   font-size: 16px;
   font-weight: 400;
   line-height: 21px;
@@ -845,25 +948,48 @@ section {
 
 /* 基础移动端适配 */
 @media screen and (max-width: 768px) {
-  .quantum-body  {
+  .quantum-body {
     overflow-x: hidden;
   }
   .quantum-body > section {
     padding-left: 7.47vw;
     padding-right: 7.47vw;
   }
+
+  .quantum-body > section.celestial-dawn {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .quantum-body > .manao-photo-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .hero-banner {
     height: 535px;
   }
-  .celestial-dawn {
+  .celestial-dawn .celestial-dawn-bg {
     height: 535px;
   }
 
   .feature-placeholder {
     height: 535px;
+    border-radius: 10px;
   }
-  .manao-image-section  {
+  .feature-footer .feature-item {
+    margin-top: 32px;
+  }
+  .feature-footer .feature-item:first-child {
+    margin-top: 0px;
+  }
+  .manao-image-section {
     height: 535px;
+  }
+  .manao-image-section .manao-content.isfull {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   /* 顶部横幅区域 */
@@ -876,7 +1002,7 @@ section {
   }
 
   .banner-content {
-    padding: 40px 20px;
+    padding: 0px 20px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -914,7 +1040,7 @@ section {
   .quantum-agape .content-wrapper h2 {
     font-size: 24px;
     margin-bottom: 20px;
-    line-height: 35px;
+    line-height: 26px;
   }
 
   .quantum-agape .content-wrapper p {
@@ -924,39 +1050,70 @@ section {
   }
 
   /* 天体黎明区域 */
-  .celestial-dawn {
-    height: auto;
-    min-height: 500px;
-    padding: 40px 20px;
+
+  .celestial-dawn .celestial-dawn-content {
     position: relative;
+    width: 100%;
+    height: 164px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .celestial-dawn .celestial-dawn-content .slide-controls {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    transform: none;
+    padding: 0 20px;
+  }
+
+  .celestial-dawn .celestial-dawn-content .prev-slide,
+  .celestial-dawn .celestial-dawn-content .next-slide {
+    width: 35px;
+    height: 35px;
+    border-radius: 2px;
+    background: rgb(35, 35, 35);
+    color: #fff;
+    font-size: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
   }
 
   .celestial-dawn .content-wrapper {
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     padding-top: 60px;
     padding-bottom: 60px;
   }
 
   .celestial-dawn .content-wrapper .feature-text {
     margin: 0;
+    padding-left: 32px;
     max-width: 100%;
     text-align: center;
-    margin-bottom: 40px;
   }
 
   .celestial-dawn .content-wrapper .feature-text h2 {
-    font-size: 24px;
-    line-height: 1.4;
-    text-align: center;
+    font-size: 22px;
+    line-height: 23px;
+    text-align: left;
   }
 
   .celestial-dawn .content-wrapper .feature-text p {
     font-size: 16px;
-    line-height: 1.6;
-    margin-top: 15px;
-    text-align: center;
+    line-height: 21px;
+    margin-top: 8px;
+    text-align: left;
+    color: rgb(134, 134, 139);
   }
 
   /* 滑动控制按钮 */
@@ -974,8 +1131,9 @@ section {
   .manao-image-section {
     min-height: 300px;
   }
-  .manao-image-section .manao-content img{
+  .manao-image-section .manao-content img {
     /* object-fit: contain; */
+    border-radius: 10px;
   }
   /* 产品模式展示区 */
   .patterns-section {
@@ -989,36 +1147,59 @@ section {
   .pattern-cards {
     height: auto;
     flex-direction: column;
-    padding: 20px;
-    gap: 20px;
+    padding: 32px 0px;
   }
 
   .pattern-card {
     width: 100%;
     min-width: auto;
+    padding: 0px;
+    margin-bottom: 48px;
+  }
+  .pattern-card:last-child {
+    margin-bottom: 0px;
+  }
+
+  .pattern-card h3 {
+    font-size: 20px;
+    line-height: 26px;
+    margin-bottom: 4px;
+  }
+  .pattern-card p {
+    margin-top: 0px;
+    font-size: 16px;
+    line-height: 21px;
   }
 
   /* 工程与艺术区域 */
   .engineering-artistry {
     padding: 40px 20px;
     width: 100%;
+    height: auto;
   }
 
   .engineering-wrapper {
     flex-direction: column;
     width: 100%;
   }
-
+  .engineering-left {
+    height: 424px;
+  }
+  .engineering-left img {
+    border-radius: 10px;
+  }
   .engineering-left,
   .engineering-right {
     width: 100%;
   }
 
-  .engineering-content {
+  .engineering-right .engineering-content {
+    margin-left: 0;
     padding: 0;
   }
 
   .engineering-content h2 {
+    margin-top: 24px;
     font-size: 24px;
   }
 
@@ -1027,7 +1208,7 @@ section {
   }
 
   .engineering-content ul {
-    padding-left: 20px;
+    padding-left: 0px;
   }
   .engineering-content ul li {
     white-space: wrap;
@@ -1035,7 +1216,15 @@ section {
 
   /* VPS区域 */
   .vps-section {
-    padding: 40px 20px;
+    padding-top: 72px;
+  }
+
+  .features-showcase .feature-block h2,
+  .beyond-earth h2,
+  .vps-section h2 {
+    margin-bottom: 24px;
+    font-size: 24px;
+    line-height: 26px;
   }
 
   .vps-features {
@@ -1056,32 +1245,72 @@ section {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-
+  .vps-stats .stat {
+    margin-bottom: 32px;
+  }
+  .vps-stats h3 {
+    color: rgb(134, 134, 139);
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .vps-stats .stat-number,
+  .vps-stats .stat-label {
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 6px;
+  }
+  .vps-stats p {
+    font-size: 18px;
+    line-height: 23px;
+  }
   /* 特性展示区 */
   .features-showcase {
-    padding: 40px 20px;
+    margin-top: 72px;
+    padding: 0px;
   }
 
   .features-showcase .feature-block {
     width: 100%;
   }
+  .features-showcase .feature-block h2 {
+    margin-bottom: 24px;
+  }
   .features-showcase .feature-block .feature-image {
     width: 100%;
+    height: 400px;
   }
 
-  .display-feature {
-    flex-direction: column;
+  .features-showcase .feature-block .feature-image img {
+    object-fit: cover;
+    height: 400px;
+    border-radius: 10px;
+  }
+
+  .display-feature.exterior {
+    margin-top: 0px;
+  }
+  .display-feature.interior {
+    margin-top: 48px;
+    flex-direction: column-reverse;
+    height: auto;
+    gap: 24px;
+  }
+  .display-feature.interior .feature-image img {
+    height: 300px;
   }
 
   .display-feature.exterior,
-  .display-feature.interior,
   .display-feature.coating {
+    height: auto;
+    margin-top: 24px;
     flex-direction: column;
+    gap: 24px;
   }
 
   .feature-image {
     width: 100%;
-    margin: 20px 0;
+    margin: 0;
   }
 
   .display-feature-text {
@@ -1091,27 +1320,59 @@ section {
   }
 
   .display-feature-text h3 {
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 21px;
   }
 
   .display-feature-text h4 {
-    font-size: 16px;
+    margin-top: 4px;
+    font-size: 20px;
+    line-height: 26px;
   }
 
   .display-feature-text p {
-    font-size: 14px;
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 18px;
   }
+  .features-translator {
+    padding-top: 72px;
+  }
+  .features-translator .feature-text h2 {
+    display: none;
+  }
+  .features-translator .feature-text p {
+    margin-top: 0px;
+  }
+  .features-translator .feature-content-title {
+    display: block;
+    width: 100%;
+    color: rgb(255, 250, 250);
+    font-family: var(--font-family-en);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
   .features-translator .feature-content {
     flex-wrap: wrap;
   }
   .features-translator .feature-content .translator-window {
     width: 100%;
+    height: 535px;
+    border-radius: 10px;
+    background-image: url('../images/chat-window-mobile.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center;
   }
   .features-translator .feature-content .feature-text {
     width: 100%;
+    height: auto;
     padding: 0;
   }
 
@@ -1123,6 +1384,25 @@ section {
     height: 30px;
   }
 
+  .video-placeholder .video-showcase-video-container,
+  .video-placeholder .video-showcase-video-container video {
+    height: 535px;
+  }
+
+  .manao-photo-section .manao-content {
+    height: 535px;
+  }
+
+  .photo-text {
+    display: none;
+  }
+
+  .video-showcase {
+    padding-top: 72px;
+  }
+  .beyond-earth {
+    margin-top: 72px;
+  }
 }
 
 /* 添加基础响应式设置 */

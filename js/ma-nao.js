@@ -130,16 +130,17 @@ document.addEventListener('DOMContentLoaded', function () {
 // 轮播图实现
 function addCelestialDawn() {
   // 轮播图实现
+  // TODO: 轮播图数据待添加
   const slides = [
     {
       background: 'images/celestial-dawn.png',
-      title: 'CELESTIAL DARK',
-      description: 'Reflecting the deep black color<br>and cosmic circular patterns',
+      title: 'Phoenix Flame',
+      description: 'Capturing the vibrant red-orange <br /> hues and dynamic energy',
     },
     {
       background: 'images/celestial-dawn2.png',
-      title: 'QUANTUM HARMONY',
-      description: 'Balancing precision engineering<br>with natural elegance',
+      title: 'Phoenix Flame',
+      description: 'Capturing the vibrant red-orange <br /> hues and dynamic energy',
     },
     {
       background: 'images/celestial-dawn3.png',
@@ -149,9 +150,10 @@ function addCelestialDawn() {
   ]
 
   let currentSlide = 0
-  const celestialSection = document.querySelector('.celestial-dawn')
-  const titleElement = celestialSection.querySelector('h2')
-  const descriptionElement = celestialSection.querySelector('p')
+  const celestialSectionWrapper = document.querySelector('.celestial-dawn')
+  const celestialSection = celestialSectionWrapper.querySelector('.celestial-dawn-bg')
+  const titleElement = celestialSectionWrapper.querySelector('h2')
+  const descriptionElement = celestialSectionWrapper.querySelector('p')
 
   // 设置初始状态
   updateSlide()
@@ -182,3 +184,56 @@ function addCelestialDawn() {
     )
   }
 }
+
+// 视频播放功能
+document.addEventListener('DOMContentLoaded', function() {
+  // 获取元素
+  const playButton = document.querySelector('.play-video-icon');
+  const videoContainer = document.querySelector('.video-showcase-video-container');
+  const video = document.querySelector('.video-showcase-video');
+
+  // 确保元素存在
+  if (playButton && videoContainer && video) {
+    // 添加点击事件监听器
+    playButton.addEventListener('click', function() {
+      // 显示视频容器
+      videoContainer.classList.add('active');
+
+      // 隐藏播放按钮
+      // playButton.classList.add('hidden');
+
+      // 播放视频
+      video.play().catch(error => {
+        console.error('视频播放失败:', error);
+        // 如果视频播放失败，恢复按钮和容器状态
+        videoContainer.classList.remove('active');
+        playButton.classList.remove('hidden');
+      });
+    });
+
+    // 监听视频的播放和停止。停止播放时，显示按钮
+    video.addEventListener('pause', function() {
+      playButton.classList.remove('hidden');
+    });
+    video.addEventListener('play', function() {
+      playButton.classList.add('hidden');
+    });
+
+    // 当点击视频时，则切换播放和停止
+    video.addEventListener('click', function() {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+
+    // 当视频结束时，恢复按钮和容器状态
+    video.addEventListener('ended', function() {
+      if (!video.loop) { // 如果视频不是循环播放的
+        videoContainer.classList.remove('active');
+        playButton.classList.remove('hidden');
+      }
+    });
+  }
+});
