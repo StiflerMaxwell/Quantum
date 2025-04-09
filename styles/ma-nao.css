@@ -1,7 +1,4 @@
-.quantum-body {
-  background-color: rgb(15, 15, 15);
-  padding-bottom: 20px;
-
+body.quantum-body {
   /* 字体族变量 */
   --font-family-en: 'vertu-en', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-family-ak: 'vertu-ak', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -11,6 +8,7 @@
   --color-secondary: rgb(134, 134, 139);
   --color-accent: rgb(231, 202, 172);
   --color-dark: rgb(17, 16, 16);
+  --color-bg-dark: rgb(15, 15, 15);
 
   /* 字体大小变量 - PC端 */
   --font-size-h1: 48px;
@@ -29,6 +27,9 @@
   --line-height-p-medium: 27px;
   --line-height-p-normal: 21px;
   --line-height-p-small: 18px;
+
+  background-color: var(--color-bg-dark);
+  padding-bottom: 20px;
 }
 
 /* 顶部横幅区域 - 全宽 */
@@ -84,7 +85,7 @@
   height: 39px;
   line-height: 39px;
   border-radius: 5px;
-  background: rgb(255, 255, 255);
+  background: var(--color-primary);
   cursor: pointer;
 
   color: var(--color-dark);
@@ -98,14 +99,14 @@
 
 .explore-btn:hover {
   /* TODO: 按钮hover 样式 */
-  background-color: rgb(255, 255, 255);
-  color: rgb(17, 16, 16);
+  background-color: var(--color-primary);
+  color: var(--color-dark);
 }
 
 /* 量子视界区域 */
 .quantum-agape {
   text-align: center;
-  background-color: rgb(15, 15, 15);
+  background-color: var(--color-bg-dark);
   padding: 0;
   min-height: 317px;
   overflow: hidden;
@@ -223,7 +224,7 @@
   border-radius: 50%;
   border-radius: 20px;
   background: rgb(35, 35, 35);
-  color: #fff;
+  color: var(--color-primary);
   font-size: 1.5rem;
 
   display: flex;
@@ -255,7 +256,7 @@
   top: 0%;
 
   white-space: nowrap;
-  color: rgb(255, 255, 255);
+  color: var(--color-primary);
   font-family: var(--font-family-ak);
   font-size: 18px;
   font-weight: 400;
@@ -455,7 +456,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgb(255, 255, 255);
+  background: var(--color-primary);
 }
 
 /* 视频展示区 */
@@ -523,11 +524,11 @@
 }
 
 .vps-section h2 {
-  color: rgb(255, 255, 255);
+  color: var(--color-primary);
   font-family: var(--font-family-en);
-  font-size: 32px;
+  font-size: var(--font-size-h2);
   font-weight: 400;
-  line-height: 35px;
+  line-height: var(--line-height-h2);
   letter-spacing: 0px;
   text-align: center;
   text-transform: uppercase;
@@ -546,9 +547,9 @@
 }
 
 .vps-feature-text p {
-  color: rgb(255, 255, 255);
+  color: var(--color-primary);
   font-family: var(--font-family-ak);
-  font-size: 24px;
+  font-size: var(--font-size-p-large);
   font-weight: 400;
   line-height: 30px;
   letter-spacing: 0px;
@@ -568,7 +569,7 @@
 }
 
 .stat h3 {
-  color: rgb(231, 202, 172);
+  color: var(--color-accent);
   font-family: var(--font-family-ak);
   font-size: 18px;
   font-weight: 400;
@@ -580,7 +581,7 @@
 
 .stat-number,
 .stat-label {
-  color: rgb(255, 255, 255);
+  color: var(--color-primary);
   font-family: var(--font-family-ak);
   font-size: 36px;
   font-weight: 500;
@@ -592,11 +593,11 @@
 }
 
 .stat p {
-  color: rgb(134, 134, 139);
+  color: var(--color-secondary);
   font-family: var(--font-family-ak);
-  font-size: 21px;
+  font-size: var(--font-size-p-medium);
   font-weight: 400;
-  line-height: 27px;
+  line-height: var(--line-height-p-medium);
   letter-spacing: 0px;
   text-align: left;
 }
@@ -690,11 +691,11 @@
 }
 
 .beyond-earth h2 {
-  color: rgb(255, 255, 255);
+  color: var(--color-primary);
   font-family: var(--font-family-en);
-  font-size: 32px;
+  font-size: var(--font-size-h2);
   font-weight: 400;
-  line-height: 35px;
+  line-height: var(--line-height-h2);
   letter-spacing: 0px;
   text-align: center;
   text-transform: uppercase;
@@ -702,11 +703,11 @@
 }
 
 .beyond-earth p {
-  color: rgb(134, 134, 139);
+  color: var(--color-secondary);
   font-family: var(--font-family-ak);
-  font-size: 16px;
+  font-size: var(--font-size-p-normal);
   font-weight: 400;
-  line-height: 21px;
+  line-height: var(--line-height-p-normal);
   letter-spacing: 0px;
   text-align: center;
 }
@@ -732,7 +733,7 @@
 }
 .feature-tips {
   margin-top: 50px;
-  color: rgb(134, 134, 139);
+  color: var(--color-secondary);
   font-family: var(--font-family-ak);
   font-size: 14px;
   font-weight: 400;
@@ -750,9 +751,9 @@
 }
 
 .feature-item h3 {
-  color: rgb(255, 255, 255);
+  color: var(--color-primary);
   font-family: var(--font-family-ak);
-  font-size: 24px;
+  font-size: var(--font-size-p-large);
   font-weight: 500;
   letter-spacing: 0px;
   text-align: left;
@@ -762,11 +763,11 @@
 }
 
 .feature-item p {
-  color: rgb(134, 134, 139);
+  color: var(--color-secondary);
   font-family: var(--font-family-ak);
-  font-size: 14px;
+  font-size: var(--font-size-p-small);
   font-weight: 400;
-  line-height: 18px;
+  line-height: var(--line-height-p-small);
   letter-spacing: 0px;
   text-align: center;
 }
@@ -821,11 +822,11 @@ section {
   display: none;
 }
 .features-translator .feature-text h2 {
-  color: rgb(255, 255, 255);
+  color: var(--color-primary);
   font-family: var(--font-family-en);
-  font-size: 32px;
+  font-size: var(--font-size-h2);
   font-weight: 400;
-  line-height: 35px;
+  line-height: var(--line-height-h2);
   letter-spacing: 0px;
   text-align: center;
   text-transform: uppercase;
@@ -833,18 +834,18 @@ section {
 }
 
 .features-translator .feature-text p {
-  color: rgb(134, 134, 139);
+  color: var(--color-secondary);
   font-family: var(--font-family-ak);
-  font-size: 16px;
+  font-size: var(--font-size-p-normal);
   font-weight: 400;
-  line-height: 21px;
+  line-height: var(--line-height-p-normal);
   letter-spacing: 0px;
   text-align: left;
 }
 
 /* 特性展示区域样式 */
 .features-showcase {
-  color: #fff;
+  color: var(--color-primary);
   padding: 120px 0;
 }
 
@@ -856,9 +857,9 @@ section {
 }
 
 .feature-block > h2 {
-  color: rgb(255, 255, 255);
+  color: var(--color-primary);
   font-family: var(--font-family-en);
-  font-size: 32px;
+  font-size: var(--font-size-h2);
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
@@ -901,9 +902,9 @@ section {
   width: 436px;
 }
 .display-feature-text h3 {
-  color: rgb(231, 202, 172);
+  color: var(--color-accent);
   font-family: var(--font-family-ak);
-  font-size: 20px;
+  font-size: var(--font-size-h4);
   font-weight: 400;
   line-height: 26px;
   letter-spacing: 0px;
@@ -911,21 +912,21 @@ section {
 }
 .display-feature-text h4 {
   margin-top: 2px;
-  color: rgb(255, 255, 255);
+  color: var(--color-primary);
   font-family: var(--font-family-ak);
-  font-size: 24px;
+  font-size: var(--font-size-p-large);
   font-weight: 400;
-  line-height: 31px;
+  line-height: var(--line-height-p-large);
   letter-spacing: 0px;
   text-align: left;
 }
 .display-feature-text p {
   margin-top: 14px;
-  color: rgb(134, 134, 139);
+  color: var(--color-secondary);
   font-family: var(--font-family-ak);
-  font-size: 16px;
+  font-size: var(--font-size-p-normal);
   font-weight: 400;
-  line-height: 21px;
+  line-height: var(--line-height-p-normal);
   letter-spacing: 0px;
   text-align: left;
 }
@@ -958,8 +959,8 @@ section {
 .learn-more {
   padding: 12px 30px;
   background: transparent;
-  border: 1px solid #fff;
-  color: #fff;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
   border-radius: 25px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -967,8 +968,8 @@ section {
 }
 
 .learn-more:hover {
-  background: #fff;
-  color: #000;
+  background: var(--color-primary);
+  color: var(--color-dark);
 }
 
 /* 基础移动端适配 */
@@ -1120,7 +1121,7 @@ section {
     height: 35px;
     border-radius: 2px;
     background: rgb(35, 35, 35);
-    color: #fff;
+    color: var(--color-primary);
     font-size: 1.5rem;
 
     display: flex;
@@ -1152,11 +1153,11 @@ section {
   }
 
   .celestial-dawn .content-wrapper .feature-text p {
-    font-size: 16px;
-    line-height: 21px;
+    font-size: var(--font-size-p-normal);
+    line-height: var(--line-height-p-normal);
     margin-top: 8px;
     text-align: left;
-    color: rgb(134, 134, 139);
+    color: var(--color-secondary);
   }
 
   /* 滑动控制按钮 */
@@ -1204,14 +1205,14 @@ section {
   }
 
   .pattern-card h3 {
-    font-size: 20px;
+    font-size: var(--font-size-h4);
     line-height: 26px;
     margin-bottom: 4px;
   }
   .pattern-card p {
     margin-top: 0px;
-    font-size: 16px;
-    line-height: 21px;
+    font-size: var(--font-size-p-normal);
+    line-height: var(--line-height-p-normal);
   }
 
   /* 工程与艺术区域 */
@@ -1243,11 +1244,11 @@ section {
 
   .engineering-content h2 {
     margin-top: 24px;
-    font-size: 24px;
+    font-size: var(--font-size-h2);
   }
 
   .engineering-content p {
-    font-size: 16px;
+    font-size: var(--font-size-p-normal);
   }
 
   .engineering-content ul {
@@ -1266,8 +1267,8 @@ section {
   .beyond-earth h2,
   .vps-section h2 {
     margin-bottom: 24px;
-    font-size: 24px;
-    line-height: 26px;
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
   }
 
   .vps-features {
@@ -1280,7 +1281,7 @@ section {
   }
 
   .vps-feature-text p {
-    font-size: 16px;
+    font-size: var(--font-size-p-normal);
     line-height: 1.6;
   }
 
@@ -1292,13 +1293,13 @@ section {
     margin-bottom: 32px;
   }
   .vps-stats h3 {
-    color: rgb(134, 134, 139);
-    font-size: 16px;
+    color: var(--color-secondary);
+    font-size: var(--font-size-p-normal);
     margin-bottom: 4px;
   }
   .vps-stats .stat-number,
   .vps-stats .stat-label {
-    color: rgb(255, 255, 255);
+    color: var(--color-primary);
     font-size: 32px;
     line-height: 38px;
     margin-bottom: 6px;
@@ -1363,19 +1364,19 @@ section {
   }
 
   .display-feature-text h3 {
-    font-size: 16px;
-    line-height: 21px;
+    font-size: var(--font-size-p-normal);
+    line-height: var(--line-height-p-normal);
   }
 
   .display-feature-text h4 {
     margin-top: 4px;
-    font-size: 20px;
+    font-size: var(--font-size-h4);
     line-height: 26px;
   }
 
   .display-feature-text p {
     margin-top: 8px;
-    font-size: 16px;
+    font-size: var(--font-size-p-normal);
     line-height: 18px;
   }
   .features-translator {
@@ -1390,11 +1391,11 @@ section {
   .features-translator .feature-content-title {
     display: block;
     width: 100%;
-    color: rgb(255, 250, 250);
+    color: var(--color-primary);
     font-family: var(--font-family-en);
-    font-size: 24px;
+    font-size: var(--font-size-h2);
     font-weight: 400;
-    line-height: 26px;
+    line-height: var(--line-height-h2);
     letter-spacing: 0px;
     text-align: center;
     text-transform: uppercase;
@@ -1462,8 +1463,8 @@ html {
 /* 优化移动端触摸体验 */
 @media (hover: none) {
   .explore-btn:hover {
-    background-color: rgb(255, 255, 255);
-    color: rgb(17, 16, 16);
+    background-color: var(--color-primary);
+    color: var(--color-dark);
   }
 
   .pattern-card:hover {
