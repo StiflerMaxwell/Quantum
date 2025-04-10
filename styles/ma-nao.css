@@ -226,6 +226,7 @@ body.quantum-body {
 
   background-color: var(--color-bg-dark);
   padding-bottom: 20px;
+  overflow-x: hidden;
 }
 
 /* ----------------- 通用样式 ------------------ */
@@ -377,12 +378,26 @@ body.quantum-body {
   width: 100%;
   position: relative;
 }
+.celestial-dawn .celestial-dawn-bg-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+.celestial-dawn .celestial-dawn-transition-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0;
+}
 .celestial-dawn .celestial-dawn-bg {
   width: 100%;
   height: 810px;
   background-image: url('../images/celestial-dawn.png');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 .celestial-dawn-content {
   position: absolute;
@@ -1266,6 +1281,7 @@ section {
   }
   .celestial-dawn .celestial-dawn-bg {
     height: 535px;
+    /* background-size: contain; */
   }
 
   .feature-placeholder {
