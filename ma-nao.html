@@ -21,11 +21,10 @@
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
         <!-- 左箭头 -->
         <symbol id="icon-arrow-left" viewBox="0 0 40 40">
-          <rect rx="20.000000" width="40.000000" height="40.000000" fill="#1E1E1E" fill-opacity="1.000000" />
+          <rect rx="20.000000" width="40.000000" height="40.000000" fill="var(--arrow-bg, #1E1E1E)" />
           <path
             d="M23.78 13.97L17.5 19.84L23.86 25.79C24.07 25.99 24.2 26.26 24.2 26.56C24.2 27.18 23.66 27.68 23 27.68C22.67 27.68 22.38 27.56 22.17 27.37L14.98 20.65C14.75 20.44 14.61 20.16 14.61 19.84C14.61 19.84 14.61 19.84 14.61 19.84C14.61 19.84 14.61 19.84 14.61 19.84C14.61 19.52 14.75 19.23 14.98 19.03L22.17 12.31L22.17 12.31C22.38 12.12 22.68 12 23 12C23.66 12 24.2 12.5 24.2 13.12C24.2 13.46 24.03 13.76 23.78 13.97Z"
-            fill="#535252"
-            fill-opacity="1.000000"
+            fill="currentColor"
             fill-rule="nonzero"
           />
         </symbol>
@@ -37,32 +36,21 @@
             width="40.000000"
             height="40.000000"
             transform="matrix(-1 0 0 1 40 0)"
-            fill="#232323"
-            fill-opacity="1.000000"
-          />
-          <rect
-            rx="19.500000"
-            width="39.000000"
-            height="39.000000"
-            transform="matrix(-1 0 0 1 40 0)"
-            stroke="#AAAAAA"
-            stroke-opacity="0"
-            stroke-width="1.000000"
+            fill="var(--arrow-bg, #232323)"
           />
           <path
             d="M16.21 13.97L22.49 19.84L16.13 25.79C15.92 25.99 15.79 26.26 15.79 26.56C15.79 27.18 16.33 27.68 16.99 27.68C17.32 27.68 17.61 27.56 17.82 27.37L25.01 20.65C25.24 20.44 25.38 20.16 25.38 19.84C25.38 19.84 25.38 19.84 25.38 19.84C25.38 19.84 25.38 19.84 25.38 19.84C25.38 19.52 25.24 19.23 25.01 19.03L17.83 12.31L17.82 12.31C17.61 12.12 17.31 12 16.99 12C16.33 12 15.79 12.5 15.79 13.12C15.79 13.46 15.96 13.76 16.21 13.97Z"
-            fill="#FFFFFF"
-            fill-opacity="1.000000"
+            fill="currentColor"
             fill-rule="nonzero"
           />
         </symbol>
 
         <!-- 播放视频图标 -->
         <symbol id="icon-play" viewBox="0 0 72 60">
-          <g opacity="0.4" style="mix-blend-mode: normal">
+          <g style="mix-blend-mode: normal">
             <path
               d="M0 6L0 54C0 57.31 2.68 60 6 60L66 60C69.31 60 72 57.31 72 54L72 6C72 2.68 69.31 0 66 0L6 0C2.68 0 0 2.68 0 6ZM66 54L6 54L6 6L66 6L66 54ZM28.5 37.79C28.5 38.86 29.07 39.85 30 40.39C30.92 40.92 32.07 40.92 33 40.39L46.5 32.59C47.42 32.06 47.99 31.07 47.99 30C47.99 28.92 47.42 27.93 46.5 27.4L33 19.6C32.07 19.06 30.92 19.06 29.99 19.6C29.06 20.14 28.49 21.13 28.5 22.2L28.5 37.79Z"
-              fill="#FFFFFF"
+              fill="currentColor"
             />
           </g>
         </symbol>
@@ -83,8 +71,8 @@
     <!-- 介绍 -->
     <section class="quantum-agape">
       <div class="content-wrapper">
-        <h2>QUANTUM AGATE: WHERE NATURE MEETS INNOVATION</h2>
-        <p>
+        <h2>QUANTUM AGATE: <span class="split-new-line mobile-no-wrap">WHERE NATURE MEETS INNOVATION</span></h2>
+        <p class="mobile-capitalize">
           Each device bears a unique quantum agate coating, hand-applied by master craftsmen. Like fingerprints of the
           earth, no two patterns are alike. These geological signatures, formed over millennia, now pulse with quantum
           energy.
@@ -99,7 +87,7 @@
         <div class="content-wrapper">
           <div class="feature-text">
             <h2>Phoenix Flame</h2>
-            <p>
+            <p class="mobile-capitalize">
               Capturing the vibrant red-orange <br />
               hues and dynamic energy
             </p>
@@ -122,8 +110,8 @@
     <!-- 介绍 -->
     <section class="quantum-agape">
       <div class="content-wrapper">
-        <h2>Quantum Encryption Meets Human Touch</h2>
-        <p>
+        <h2>Quantum Encryption <span class="split-new-line mobile-no-wrap">Meets Human Touch</span></h2>
+        <p class="mobile-capitalize">
           The world's first compact folding marvel,engineered at the frontier of 3nm precision.Where quantum meets nano
           —a masterpiece that graces the palm of your hand.
         </p>
@@ -169,7 +157,7 @@
         <div class="engineering-right">
           <div class="engineering-content">
             <h2>ENGINEERING MEETS ARTISTRY</h2>
-            <p>The King Kong Axis: Redefining Durability</p>
+            <p class="mobile-capitalize">The King Kong Axis: Redefining Durability</p>
             <ul>
               <li>Certified for 800,000 folds: A lifetime of 200 daily transformations</li>
               <li>Aerospace-grade titanium alloy achieving HV800 hardness</li>
@@ -203,17 +191,18 @@
         <div class="vps-features">
           <div class="vps-feature-text">
             <p>
-              Introducing M4, the next generation of Apple silicon. M4 powers Apple Intelligence on iPad Pro helping you
-              write, edit, research, and plan like never before—efficiently. And it delivers outrageous performance in
-              an exceptionally thin and light design. An entirely new display engine enables stunning precision, color,
-              and brightness. A powerful GPU with hardware-accelerated ray tracing renders game-changing graphics. And
-              the Neural Engine in M4 makes iPad Pro an absolute powerhouse for AI.
+              Unlock a new era of efficiency with VERTU’s intelligent digital workforce—an advanced AI-powered system
+              designed to assist you seamlessly in every aspect of your life. Whether you're managing work tasks,
+              researching information, or generating creative content, this technology acts as your personal assistant,
+              streamlining processes and enhancing productivity. Think of it as your always-available digital partner,
+              capable of handling everything from complex data analysis to instant content creation, so you can focus on
+              what truly matters.
             </p>
           </div>
           <div class="vps-stats">
             <div class="stat">
               <h3>More than</h3>
-              <div class="stat-number">2,000+</div>
+              <div class="stat-number" data-target="2000">2,000+</div>
               <p>AI-powered professionals</p>
             </div>
             <div class="stat">
@@ -250,6 +239,8 @@
     <section class="manao-photo-section">
       <div class="manao-content isfull">
         <img src="./images/photo-bg.png" alt="phone-img" />
+      </div>
+      <div class="phone-desc-container">
         <p class="photo-text photo-text-1">50MP AI dual camera system</p>
         <p class="photo-text photo-text-2">OIS + EIS stabilization</p>
         <p class="photo-text photo-text-3">Millisecond AI subject isolation</p>
@@ -262,9 +253,9 @@
     <section class="beyond-earth">
       <div class="content-wrapper">
         <h2>BEYOND EARTH'S BOUNDARIES</h2>
-        <p>
-          Satellite Communication. Exclusive Vertu Uplink. Direct satellite connectivity. Anywhere. No need for the
-          stars.
+        <p class="mobile-capitalize">
+          Satellite Communication. Exclusive Vertu Uplink. Direct satellite connectivity. Anywhere.
+          <span>No need for the stars.</span>
         </p>
 
         <div class="feature-showcase">

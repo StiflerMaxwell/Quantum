@@ -105,7 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // 为统计数字添加计数动画
   const statNumbers = document.querySelectorAll('.stat-number')
   statNumbers.forEach((stat) => {
-    const targetNumber = parseInt(stat.textContent)
+    const dataTarget = parseInt(stat.getAttribute('data-target') ?? 0)
+    const targetNumber = dataTarget || parseInt(stat.textContent)
+    const isPlus = targetNumber > 1000
     gsap.fromTo(
       stat,
       { innerText: 0 },
@@ -118,7 +120,12 @@ document.addEventListener('DOMContentLoaded', function () {
           start: 'top 80%',
         },
         onUpdate: function () {
-          stat.textContent = Math.floor(this.targets()[0].innerText) + '+'
+          const textValue = Math.floor(this.targets()[0].innerText)
+          if (isPlus) {
+            stat.textContent = textValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '+'
+          } else {
+            stat.textContent = textValue + '+'
+          }
         },
       }
     )
